@@ -41,7 +41,7 @@
  }
 
  .panier{
-     color: aqua;
+     color: rgb(10, 10, 10);
      margin-right: 90px;
  }
 
@@ -106,7 +106,7 @@ body {
 .card-signin .card-img-left {
     width: 45%;
     /* Link to your background image using in the property below! */
-    background: scroll center url('fond.jpg');
+    background: scroll center;
     background-size: cover;
 }
 
@@ -225,3 +225,18 @@ body {
     }
 }
 
+.clipimg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    clip: rect(4px, 370px, 732px, 4px);
+}
+
+@media only screen and (max-width: 768px) {
+    .clipimg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        clip: rect(4px, 323px, 732px, 4px);
+    }
+}

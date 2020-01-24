@@ -1,0 +1,110 @@
+<div class="container">
+
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-6 haut">
+    <h1 class="my-4">
+    <small><%= @articl.title%></small>
+  </h1>
+    <% if @articl.image_url == nil %>
+      <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
+      <%else%>
+        <%= image_tag (@articl.image_url), class:"img-fluid tailimg" %>
+        <%end%>
+    </div>
+
+    <div class="col-md-6 haut">
+    <h1 class="my-4">
+    <small>histoire</small>
+  </h1>
+      <p class="scroltext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, lacus sed volutpat hendrerit, dolor neque vehicula neque, at imperdiet magna mi sed lorem. Phasellus sollicitudin volutpat justo. Nunc turpis mi, facilisis in ligula at, blandit aliquam elit. Proin a pharetra nunc, sed consectetur nisi. Fusce auctor, lacus at euismod scelerisque, elit orci ultricies lorem, et efficitur erat orci auctor nisi. Fusce tempor, felis a rhoncus egestas, mauris metus facilisis sem, ut interdum mauris justo non odio. Vestibulum rhoncus libero leo, sit amet sollicitudin ante consectetur non. Nam aliquet in libero non faucibus.
+
+Nulla sagittis, tortor a efficitur volutpat, massa est feugiat mauris, nec tristique turpis enim semper augue. Duis gravida nisi vel blandit auctor. Maecenas id mollis dui. Morbi pellentesque risus est, at dignissim nisi pellentesque sit amet. Cras at sem posuere diam aliquet rutrum. Sed ultrices placerat nulla varius aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent faucibus pharetra velit lacinia feugiat. Praesent quis commodo lacus, a posuere urna. Pellentesque dignissim nulla vitae interdum luctus. In pretium sem in ex vestibulum maximus. Ut ornare nunc quis velit mollis, at ornare sapien efficitur. Nam cursus cursus magna id suscipit. Nullam ligula odio, aliquam non auctor eu, malesuada a erat. Sed sem nisi, sagittis eget velit et, rutrum dignissim lorem.
+
+Suspendisse ut nulla in erat hendrerit ullamcorper ullamcorper nec erat. Morbi efficitur maximus tortor a lobortis. Donec condimentum felis ac nunc malesuada semper. Interdum et malesuada fames ac ante ipsum primis in faucibus. In non eros eget magna sagittis finibus vel vitae sapien. Suspendisse quis ultricies est. Pellentesque et lectus faucibus, mattis massa et, interdum metus. Fusce nec justo scelerisque, tincidunt diam non, tempus tellus.
+
+Phasellus risus quam, finibus ac molestie a, imperdiet eget felis. Nam interdum sagittis nisi ut condimentum. Cras mattis suscipit ligula ac facilisis. Fusce tempus orci ut lacus tincidunt, quis molestie nisi facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eleifend augue diam, non porta elit tempor non. Donec eget dui in massa interdum viverra hendrerit a mi. Sed cursus pharetra eleifend. Nunc eget quam porta, auctor est id, porta sem.
+
+Aenean nec leo eget diam hendrerit placerat. Nulla sed diam blandit, tincidunt odio vel, sodales dui. Suspendisse mollis laoreet felis eu faucibus. Pellentesque lacus nisl, eleifend vel efficitur ac, pulvinar non elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas tempus, magna sodales vulputate pretium, tellus nulla consectetur diam, id tempus felis tellus sed urna. Nunc sit amet nisi in odio tempor ornare. Quisque vehicula urna nisi, eget dignissim justo aliquet at.</p>
+
+    </div>
+
+     <div class="col-md-6">
+    <h1 class="my-4">
+    <small>Fiche technique </small>
+  </h1>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary">This is a primary list group item</li>
+            <li class="list-group-item ">This is a secondary list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a success list group item</li>
+            <li class="list-group-item ">This is a danger list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a warning list group item</li>
+            <li class="list-group-item ">This is a info list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a light list group item</li>
+            <li class="list-group-item ">This is a dark list group item</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+    <h1 class="my-4">
+    <small>Valeurs nutritive</small>
+  </h1>
+     <table class="table">
+ 
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related Projects</h3>
+
+  <div class="row">
+
+<% @article.each do |article|%>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="/articles/<%= article.id%>">
+            <% if article.image_url == nil %>
+      <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
+      <%else%>
+        <%= image_tag (article.image_url), class:"img-fluid tailimg" %>
+        <%end%>
+          </a>
+    </div>
+<%end%>
+
+  </div>
+  <!-- /.row -->
+
+</div>

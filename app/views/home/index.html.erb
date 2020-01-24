@@ -64,46 +64,74 @@
 
   <!-- Marketing messaging and featurettes
       ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <!-- page article -->
 
   <div class="container marketing">
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
+
+      <%# debut de l'article %>
+      <% @article.each do |article|%>
+      
       <div class="col-lg-4">
-        <!-- <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140"> -->
-          <%= image_tag ("baobab.png"), class:"rounded-circle tail"%>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-          vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus
-          magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+     
+      <button type="button" class="btn btn-outline-danger border-0" data-toggle="modal" data-target="#exampleModalCenter">
+      <% if article.image_url == nil %>
+      <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
+      <%else%>
+        <%= image_tag (article.image_url), class:"rounded-circle tail" %>
+        <%end%>
+      </button>
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <%= article.id%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <h2><%= article.title %></h2>
+        <%= article.id%>
+        <div class="taildiv">
+        <p class="tailsp"><%= article.description%></p>
+        </div>
+       <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
+      <a href="articles/<%=article.id%>" data-method="delete", data-confirm="are you sur?"><i class="far fa-trash-alt"></i></a>
+      <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
+
+
+        <%# <i class="fas fa-shopping-basket"></i>
+        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a> %>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <!-- <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140"> -->
-          <%= image_tag ("curcuma.png"), class:"rounded-circle tail"%>
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis
-          consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
-        </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <!-- <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140"> -->
-          <%= image_tag ("gingembre.png"), class:"rounded-circle tail"%>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-          felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-          massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+    <%# <% article.image_url.length%>
+        
+
+       
+      <%end%>
+      <%# fin de l'article %>
+    </div>
+      <!-- /.row -->
+
+    <%# modal de chaque article  %>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
 
 
     <!-- START THE FEATURETTES -->

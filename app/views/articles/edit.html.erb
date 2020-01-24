@@ -1,0 +1,45 @@
+<div class="container">
+
+ <%=form_for @article,url:{action:"update"} do |f|%>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <%# <label for="validationDefault01">First name</label> %>
+      <%= f.label :title, "Titre", for:"validationDefault01"  %>
+      <%# <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required> %>
+      <%=f.text_field :title, placeholder: "Titre",class: "form-control", id:"validationDefault01"%>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%# <label for="validationDefault02">Last name</label> %>
+       <%= f.label :season, "Saison", for:"validationDefault02"  %>
+      <%# <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required> %>
+      <%=f.text_field :season, placeholder: "Saison",class: "form-control", id:"validationDefault02"%>
+    </div>
+     <div class="col-md-4 mb-3">
+      <%# <label for="validationDefault02">Last name</label> %>
+       <%= f.label :origin, "Origine", for:"validationDefault03"  %>
+      <%# <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required> %>
+      <%=f.text_field :origin, placeholder: "Origine",class: "form-control", id:"validationDefault03"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <%# <label for="exampleFormControlTextarea1">Example textarea</label> %>
+          <%= f.label :description, "Description", for:"exampleFormControlTextarea1"  %>
+          <%# <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> %>
+           <%=f.text_area :description, placeholder: "Description",class: "form-control", id:"exampleFormControlTextarea1", rows:"3"%>
+      </div>
+      </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault04">Photo</label>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+   <%= f.submit 'valider', class:"btn btn-primary"%>
+  </div>
+<%end%>
+</div>

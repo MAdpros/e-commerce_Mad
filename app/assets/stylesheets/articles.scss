@@ -1,0 +1,23 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.haut{
+    height: 416px;
+    margin-bottom: 120px;
+}
+
+.tailimg{
+    width: 100%;
+    height: 100% !important;
+    background-size: cover;
+}
+
+.scroltext{
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    text-align: justify;
+    padding-right: 20px;
+}
