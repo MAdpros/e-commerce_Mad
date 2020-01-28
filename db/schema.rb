@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_142004) do
+ActiveRecord::Schema.define(version: 2020_01_27_085909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2020_01_23_142004) do
     t.string "season"
     t.string "origin"
     t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "type_id"
+    t.bigint "article_id"
+    t.float "price"
+    t.boolean "disponibility", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_products_on_article_id"
+    t.index ["type_id"], name: "index_products_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

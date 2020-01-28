@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
         @articl = Article.find(params[:id])
         @article = Article.all
         @article = @article[0..3]
+        
     end
 
     def destroy

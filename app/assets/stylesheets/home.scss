@@ -102,7 +102,6 @@
 }
 
 // article
-
 .taildiv{
     height: 25%;
     margin-bottom: 30px;
@@ -118,4 +117,27 @@
 .textart{
     color: black;
     text-decoration: none;
+}
+
+
+// front modal
+.modalimg {
+    width: 100%;
+}
+
+.promodal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imgcontent {
+    width: 20%;
+}
+
+.listprod {
+    margin-bottom: 0px;
+}
+
+.formqtt {
+    width: 20%;
 }

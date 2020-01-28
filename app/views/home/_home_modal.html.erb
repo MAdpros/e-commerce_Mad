@@ -1,0 +1,52 @@
+
+  <div id="home-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">titre <%=@articl.id%></h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+          <%@produit.each do |produit|%>
+            <div class="modal-body">
+              <h5><%= @typ.content%></h5>
+              <div class="promodal">
+                <div class="imgcontent">
+                    <%=image_tag (@articl.image_url), class:"modalimg"%>
+                </div>
+                <div>
+                  <p class="listprod">★★★★☆ (<span class="avis">2</span>) </p>
+                  <p class="listprod"><%=@arti.title%></p>
+                  <%if @typ.content == "Vrac" %>
+                  <p class="listprod"><%= produit.price%> euros/kg</p>
+                  <%else%>
+                  <p class="listprod"><%= produit.price%> euros/unité</p>
+                  <%end%>
+
+                  <%if  produit.disponibility == true %>
+                  <p class="listprod listcol">Disponible immédiatement </p>
+                  <%else%>
+                  <p class="listprod listcol">Non disponible pour le moment </p>
+                  <%end%>
+                  <%# <p class="listprod">Total : <span>10</span> euros </p>
+                  <p>
+                    <form action="" method="post">
+                      <label for="">Quantité : </label>
+                      <input type="number" name="" id="" class="formqtt" placeholder="0">
+                    </form>
+                  </p> %>
+                </div>
+              </div>
+                <div>
+                  <hr>
+                </div>
+            </div>
+          <%end%>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <%# produit id  <%=produit.id%>
+                    <%# type id  <%=produit.type_id%>
+                    <%# aricle id  <%=produit.article_id%>
+                    <%# aricle image  <%=@arti.image_url%>
+                    <%# type content  <%=@typ.content%>
