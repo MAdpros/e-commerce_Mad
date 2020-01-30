@@ -8,6 +8,7 @@
 
 Article.destroy_all
 Type.destroy_all
+Cart.destroy_all
 
 img = ["baobab.png", "curcuma.png", "gingembre.png", "macis.jpg", "muscade.jpg", "voatsiperifery.jpg"]
 cont = ["Vrac", "Doypack","null"]

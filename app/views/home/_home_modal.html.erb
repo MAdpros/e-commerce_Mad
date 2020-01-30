@@ -14,6 +14,7 @@
                     <%=image_tag (@articl.image_url), class:"modalimg"%>
                 </div>
                 <div>
+                <p class="listprod"><%=produit.id%></p>
                   <p class="listprod">★★★★☆ (<span class="avis">2</span>) </p>
                   <p class="listprod"><%=@arti.title%></p>
                   <%if @typ.content == "Vrac" %>
@@ -35,6 +36,7 @@
                     </form>
                   </p> %>
                 </div>
+                <%= button_to "add", line_items_path(product_id: produit.id), class:"btn btn-primary"%>
               </div>
                 <div>
                   <hr>
