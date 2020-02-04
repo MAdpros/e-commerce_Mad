@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transit: MyString
+  price: 1.5
+  mode: MyString
+
+two:
+  transit: MyString
+  price: 1.5
+  mode: MyString

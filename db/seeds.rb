@@ -9,7 +9,9 @@
 Article.destroy_all
 Type.destroy_all
 Cart.destroy_all
+Delivery.destroy_all
 
+trans = ["DHL", "Midex", "ASL"]
 img = ["baobab.png", "curcuma.png", "gingembre.png", "macis.jpg", "muscade.jpg", "voatsiperifery.jpg"]
 cont = ["Vrac", "Doypack","null"]
 

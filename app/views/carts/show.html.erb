@@ -21,5 +21,6 @@
   </tbody>
 </table>
 <p>  total : <span class="badge badge-info"><%= number_to_currency(@cart.total, unit:"euro", separator:",", format: "%n %u")%></p>
+<%= button_to "passer la commande", new_order_path, method: :get, class:"btn btn-primary mb-2"%>
 <%# <%= button_to "vider le panier", @cart, method: :delete, data:{confirm:"Êtes vous sûr?"}, class:"btn btn-danger" %> 
 <a href="/carts/<%= current_user.cart.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">vider le panier</a>

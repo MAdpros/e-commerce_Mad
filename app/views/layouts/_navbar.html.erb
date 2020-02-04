@@ -39,7 +39,7 @@
 <div>
 <% if user_signed_in?%>
 <% if current_user.cart == nil %>
-<a href=""> <i class="fas fa-shopping-basket panier">(0)<%= params[:notice] %></i></a>
+<a href="/carts/new"> <i class="fas fa-shopping-basket panier">(0)<%= params[:notice] %></i></a>
 <%else%>
   <a href="/carts/<%= current_user.cart.id%>"> <i class="fas fa-shopping-basket panier">(<%= current_user.cart.line_items.count%>)</i></a>
   <%end%>
