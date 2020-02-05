@@ -1,2 +1,4 @@
 class Delivery < ApplicationRecord
+
+  
 end

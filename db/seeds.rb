@@ -11,6 +11,7 @@ Type.destroy_all
 Cart.destroy_all
 Delivery.destroy_all
 
+mode = ["Normal", "Rapide"]
 trans = ["DHL", "Midex", "ASL"]
 img = ["baobab.png", "curcuma.png", "gingembre.png", "macis.jpg", "muscade.jpg", "voatsiperifery.jpg"]
 cont = ["Vrac", "Doypack","null"]
@@ -31,3 +32,11 @@ puts "vita type"
 end
 puts "product create"
 
+3.times do |i|
+    Delivery.create(transit: trans[rand(0..2)], mode: mode[1], price: 100)
+end
+
+3.times do |i|
+    Delivery.create(transit: trans[rand(0..2)], mode: mode[0], price: 200)
+end
+ puts "Livraison fait"

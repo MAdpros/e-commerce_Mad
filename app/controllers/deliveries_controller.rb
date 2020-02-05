@@ -5,6 +5,8 @@ class DeliveriesController < ApplicationController
   # GET /deliveries.json
   def index
     @deliveries = Delivery.all
+     @line_items = LineItem.all
+     @cart = Cart.find(current_user.cart.id)
   end
 
   # GET /deliveries/1

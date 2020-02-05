@@ -32,8 +32,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        @cart.destroy
-        format.html { redirect_to root_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to deliveries_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
