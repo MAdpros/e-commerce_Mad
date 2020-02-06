@@ -1,6 +1,6 @@
 class DeliveriesController < ApplicationController
   before_action :set_delivery, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /deliveries
   # GET /deliveries.json
   def index
@@ -71,6 +71,6 @@ class DeliveriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def delivery_params
-      params.require(:delivery).permit(:transit, :price, :mode)
+      params.require(:delivery).permit(:transit, :price, :mode, :totalprice)
     end
 end
