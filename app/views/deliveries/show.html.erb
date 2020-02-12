@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Transit:</strong>
-  <%= @delivery.transit %>
-</p>
+<ul>
+    <%= @delivery.transit.name%> /
+    <%= @delivery.transit.price%>
 
-<p>
-  <strong>Price:</strong>
-  <%= @delivery.price %>
-</p>
+</ul>
 
-<p>
-  <strong>Mode:</strong>
-  <%= @delivery.mode %>
-</p>
 
 <%= link_to 'Edit', edit_delivery_path(@delivery) %> |
 <%= link_to 'Back', deliveries_path %>
+<a href="/deliveries/<%= current_user.delivery.id%>" data-method="delete" data-confirm="êtes vous sure ?"
+  class="badge badge-danger">enlever</a>
+
+  <p> total : <span class="badge badge-info"><%= number_to_currency(@delivery.total, unit:"euro", separator:",", format: "%n %u")%></p>

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   
   
+  resources :liners
   resources :deliveries
+  resources :transits
   resources :orders
   resources :line_items
   resources :carts
@@ -13,5 +15,6 @@ Rails.application.routes.draw do
   resources :types
   resources :products
   resources :charges
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

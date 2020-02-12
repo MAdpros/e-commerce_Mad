@@ -1,0 +1,27 @@
+<%= form_with(model: liner, local: true) do |form| %>
+  <% if liner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(liner.errors.count, "error") %> prohibited this liner from being saved:</h2>
+
+      <ul>
+      <% liner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :delivery_id %>
+    <%= form.text_field :delivery_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transit_id %>
+    <%= form.text_field :transit_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

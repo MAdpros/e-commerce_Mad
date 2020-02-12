@@ -1,9 +1,7 @@
 class CreateDeliveries < ActiveRecord::Migration[5.2]
   def change
     create_table :deliveries do |t|
-      t.string :transit
-      t.float :price
-      t.string :mode
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

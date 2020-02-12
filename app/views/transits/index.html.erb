@@ -1,0 +1,95 @@
+
+<div class="container">
+<%= render "/carts/cart.html.erb" %>
+
+
+<h1>Livraison</h1>
+
+
+
+  <div class="row">
+    <div class="col">
+     <table>
+       <thead>
+         <tr>
+           <th>Name</th>
+           <th>Mode</th>
+           <th>Price</th>
+           <th colspan="3"></th>
+         </tr>
+       </thead>
+
+       <tbody>
+         <% @transits.each do |transit| %>
+         <% if transit.mode == "Normal"%>
+         <tr>
+           <td><%= transit.name %></td>
+           <td><%= transit.mode %></td>
+           <td><%= transit.price %></td>
+           <td><%= link_to 'Show', transit %></td>
+           <td><%= link_to 'Edit', edit_transit_path(transit) %></td>
+           <td><%= link_to 'Destroy', transit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <% if current_user.delivery == nil %>
+           <td><%= button_to "choisir", liners_path(transit_id: transit), class:"btn btn-outline-primary"%></td>
+           <%else%>
+          <%end%>
+
+         </tr>
+         <% end %>
+         <% end %>
+       </tbody>
+     </table>
+    </div>
+    <div class="col">
+     <table>
+       <thead>
+         <tr>
+           <th>Name</th>
+           <th>Mode</th>
+           <th>Price</th>
+           <th colspan="3"></th>
+         </tr>
+       </thead>
+
+       <tbody>
+         <% @transits.each do |transit| %>
+         <% if transit.mode == "Rapide"%>
+         <tr>
+           <td><%= transit.name %></td>
+           <td><%= transit.mode %></td>
+           <td><%= transit.price %></td>
+           <td><%= link_to 'Show', transit %></td>
+           <td><%= link_to 'Edit', edit_transit_path(transit) %></td>
+           <td><%= link_to 'Destroy', transit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+             <% if current_user.delivery == nil %>
+             <td><%= button_to "choisir", liners_path(transit_id: transit), class:"btn btn-outline-primary"%></td>
+             <%else%>
+             <%end%>
+         </tr>
+         <% end %>
+         <% end %>
+       </tbody>
+     </table>
+    </div>
+  </div>
+
+
+
+
+<br>
+
+<%= link_to 'New Transit', new_transit_path %>
+
+<br>
+
+<%= render "/deliveries/show.html.erb" %>
+
+ <% if current_user.delivery == nil %>
+<br>
+ <%else%>
+<%= render "/charges/new.html.erb" %>
+ <%end%>
+
+</div>

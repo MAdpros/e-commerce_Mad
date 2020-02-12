@@ -11,6 +11,24 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+
+$("#lienactive").one("click", function () {
+  alert("This will be displayed only once.");
+});
+
+  function initElement() {
+    var p = document.getElementById("flienactive");
+    // NOTE: showAlert(); ou showAlert(param); NE fonctionne PAS ici.
+    // Il faut fournir une valeur de type function (nom de fonction déclaré ailleurs ou declaration en ligne de fonction).
+    p.onclick = showAlert;
+  };
+
+function showAlert() {
+  alert("Evènement de click détecté");
+}

@@ -9,12 +9,14 @@
 Article.destroy_all
 Type.destroy_all
 Cart.destroy_all
-Delivery.destroy_all
+Transit.destroy_all
+
 
 mode = ["Normal", "Rapide"]
 trans = ["DHL", "Midex", "ASL"]
 img = ["baobab.png", "curcuma.png", "gingembre.png", "macis.jpg", "muscade.jpg", "voatsiperifery.jpg"]
 cont = ["Vrac", "Doypack","null"]
+prix = [100, 200, 300, 400, 500, 600]
 
 6.times do |i|
    Article.create(title: Faker::Dessert.flavor, description: Faker::Quote.matz, season: Faker::Nation.language, origin: Faker::Nation.nationality, image_url: img[rand(5)])
@@ -33,10 +35,11 @@ end
 puts "product create"
 
 3.times do |i|
-    Delivery.create(transit: trans[rand(0..2)], mode: mode[1], price: 100)
+    Transit.create(name: trans[rand(0..2)], mode: mode[1], price: prix[rand(0..2)])
 end
 
 3.times do |i|
-    Delivery.create(transit: trans[rand(0..2)], mode: mode[0], price: 200)
+    Transit.create(name: trans[rand(0..2)], mode: mode[0], price:  prix[rand(3..5)])
 end
- puts "Livraison fait"
+
+puts "vita transit"

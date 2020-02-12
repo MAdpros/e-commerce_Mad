@@ -14,9 +14,6 @@ class DeliveriesTest < ApplicationSystemTestCase
     visit deliveries_url
     click_on "New Delivery"
 
-    fill_in "Mode", with: @delivery.mode
-    fill_in "Price", with: @delivery.price
-    fill_in "Transit", with: @delivery.transit
     click_on "Create Delivery"
 
     assert_text "Delivery was successfully created"
@@ -27,9 +24,6 @@ class DeliveriesTest < ApplicationSystemTestCase
     visit deliveries_url
     click_on "Edit", match: :first
 
-    fill_in "Mode", with: @delivery.mode
-    fill_in "Price", with: @delivery.price
-    fill_in "Transit", with: @delivery.transit
     click_on "Update Delivery"
 
     assert_text "Delivery was successfully updated"

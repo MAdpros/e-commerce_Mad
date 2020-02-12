@@ -1,17 +1,17 @@
 class DeliveriesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_delivery
   before_action :set_delivery, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+
   # GET /deliveries
   # GET /deliveries.json
   def index
     @deliveries = Delivery.all
-     @line_items = LineItem.all
-     @cart = Cart.find(current_user.cart.id)
   end
 
   # GET /deliveries/1
   # GET /deliveries/1.json
   def show
+    @delivery = @delivery.liners.last 
   end
 
   # GET /deliveries/new
@@ -58,7 +58,7 @@ class DeliveriesController < ApplicationController
   def destroy
     @delivery.destroy
     respond_to do |format|
-      format.html { redirect_to deliveries_url, notice: 'Delivery was successfully destroyed.' }
+      format.html { redirect_to transits_path, notice: 'Delivery was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,10 @@ class DeliveriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def delivery_params
-      params.require(:delivery).permit(:transit, :price, :mode, :totalprice)
+      params.fetch(:delivery, {})
+    end
+
+    def invalid_delivery
+      redirect_to root_path, alert: "not found"
     end
 end

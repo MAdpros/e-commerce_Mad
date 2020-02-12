@@ -1,0 +1,22 @@
+
+<% if current_user.delivery != nil%>
+<!-- <ul>
+  <%# @delivery.transit.name%> /
+  <%# @delivery.transit.price%>
+</ul> -->
+<% @delivery.liners.each do |item|%>
+ <%= item.transit.name%> /
+ <%= item.transit.price%> </br>
+ <%end%>
+
+
+<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
+<%= link_to 'Back', deliveries_path %>
+<a href="/deliveries/<%= current_user.delivery.id%>" data-method="delete" data-confirm="êtes vous sure ?"
+  class="badge badge-danger">changer</a>
+  
+
+<p> total : <span
+    class="badge badge-info"><%= number_to_currency(@delivery.total, unit:"euro", separator:",", format: "%n %u")%></p>
+    <%else%>
+    <%end%>

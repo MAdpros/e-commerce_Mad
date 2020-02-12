@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Delivery:</strong>
+  <%= @liner.delivery %>
+</p>
+
+<p>
+  <strong>Transit:</strong>
+  <%= @liner.transit %>
+</p>
+
+<%= link_to 'Edit', edit_liner_path(@liner) %> |
+<%= link_to 'Back', liners_path %>

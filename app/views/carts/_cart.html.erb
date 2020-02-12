@@ -20,3 +20,6 @@
      <%end%>
   </tbody>
 </table>
+
+<p> total : <span
+    class="badge badge-info"><%= number_to_currency(@cart.total, unit:"euro", separator:",", format: "%n %u")%></p>
