@@ -2,6 +2,7 @@ class TransitsController < ApplicationController
   include CurrentCart
   include CurrentDelivery
   before_action :set_transit, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_manager!, only: [:create, :edit, :update, :destroy]
 
   # GET /transits
   # GET /transits.json

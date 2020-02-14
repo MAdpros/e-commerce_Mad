@@ -2,6 +2,7 @@ class LinersController < ApplicationController
   include CurrentDelivery
   before_action :set_delivery, only: [:create]
   before_action :set_liner, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_manager!, only: [:edit, :update]
 
   # GET /liners
   # GET /liners.json

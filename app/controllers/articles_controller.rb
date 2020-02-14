@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-
+    before_action :authenticate_manager!, only: [:create, :edit, :update, :destroy]
 
     def index
-        
+        @article = Article.all
     end
 
     def new

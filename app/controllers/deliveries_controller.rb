@@ -1,6 +1,7 @@
 class DeliveriesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_delivery
   before_action :set_delivery, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_manager!, only: [:create, :edit, :update]
 
   # GET /deliveries
   # GET /deliveries.json

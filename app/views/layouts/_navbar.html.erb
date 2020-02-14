@@ -19,10 +19,18 @@
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
+         <% if manager_signed_in?%>
+         <li class="nav-item">
+           <a class="nav-link" href="/managers/sign_out" data-method="delete">Se deconnecter</a>
+         </li>
+         <%end%>
         <% if user_signed_in?%>
         <li class="nav-item">
           <a class="nav-link" href="/users/sign_out" data-method = "delete">Se deconnecter</a>
         </li>
+        <%else%>
+        <% if current_manager%>
+
         <%else%>
         <li class="nav-item">
           <a class="nav-link" href="/users/sign_up">S'inscrire</a>
@@ -30,6 +38,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/users/sign_in">Se connecter</a>
         </li>
+        <%end%>
         <%end%>
       </ul>
     </div>

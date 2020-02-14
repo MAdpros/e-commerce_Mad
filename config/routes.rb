@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   
   
+  devise_for :managers
   resources :liners
   resources :deliveries
   resources :transits

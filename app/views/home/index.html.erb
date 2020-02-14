@@ -91,9 +91,13 @@
         <div class="taildiv">
         <p class="tailsp"><%= article.description%></p>
         </div>
+
+        <%if current_manager %>
        <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
       <a href="articles/<%=article.id%>" data-method="delete", data-confirm="are you sur?"><i class="far fa-trash-alt"></i></a>
-      <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
+     
+      <%end%>
+       <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
 
 
         <%# <i class="fas fa-shopping-basket"></i>

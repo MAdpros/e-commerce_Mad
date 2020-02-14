@@ -75,3 +75,8 @@ gem 'dotenv-rails'
 gem 'mailjet'
 gem 'stripe'
 gem 'jquery-rails'
+
+# gem administrateur trestle
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
