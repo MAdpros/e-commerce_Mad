@@ -1,49 +1,32 @@
 
 
 <div class="container marketing">
-
-  <!-- Three columns of text below the carousel -->
+   <h2>Tous les articles </h2>
   <div class="row">
-
     <%# debut de l'article %>
     <% @article.each do |article|%>
-
-    <div class="col-lg-4">
-
-      <%# lien modal %>
-      <%= link_to home_path(article.id), remote: true do %>
-
-      <% if article.image_url == nil %>
-      <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
-      <%else%>
-      <%= image_tag (article.image_url), class:"rounded-circle tail" %>
-      <%end%>
-      <%end%>
-
-      <h2><%= article.title %></h2>
-      <%= article.id%>
-      <div class="taildiv">
-        <p class="tailsp"><%= article.description%></p>
+      <div class="col-lg-4">
+        <%# lien modal %>
+        <%= link_to home_path(article.id), remote: true do %>
+          <% if article.image_url == nil %>
+            <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
+          <%else%>
+            <%= image_tag (article.image_url), class:"rounded-circle tail" %>
+          <%end%>
+        <%end%>
+        <h2><%= article.title %></h2>
+          <%= article.id%>
+        <div class="taildiv">
+          <p class="tailsp"><%= article.description%></p>
+        </div>
+          <%if current_manager %>
+          <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
+          <a href="articles/<%=article.id%>" data-method="delete" , data-confirm="are you sur?"><i
+              class="far fa-trash-alt"></i></a>
+          <%end%>
+        <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
       </div>
-
-      <%if current_manager %>
-      <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
-      <a href="articles/<%=article.id%>" data-method="delete" , data-confirm="are you sur?"><i
-          class="far fa-trash-alt"></i></a>
-
-      <%end%>
-      <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
-
-
-      <%# <i class="fas fa-shopping-basket"></i>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a> %>
-    </div><!-- /.col-lg-4 -->
-    <%# <% article.image_url.length%>
-
-    <%# <%= link_to 'View Post', home_path(article.id),remote: true %>
-
     <%end%>
-    <%# fin de l'article %>
   </div>
-<
+</div>
 <div id='post-content'></div>

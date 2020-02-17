@@ -16,19 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
+jQuery(function ($) {
+  $('#mirror').text($('#alice').val());
 
-
-$("#lienactive").one("click", function () {
-  alert("This will be displayed only once.");
+  $('#alice').on('input', function () {
+    $('#mirror').text($('#alice').val() * $('#prix').val());
+  });
 });
-
-  function initElement() {
-    var p = document.getElementById("flienactive");
-    // NOTE: showAlert(); ou showAlert(param); NE fonctionne PAS ici.
-    // Il faut fournir une valeur de type function (nom de fonction déclaré ailleurs ou declaration en ligne de fonction).
-    p.onclick = showAlert;
-  };
-
-function showAlert() {
-  alert("Evènement de click détecté");
-}

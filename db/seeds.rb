@@ -28,13 +28,13 @@ end
 
 puts "vita article"
 
-12.times do |i|
-    Type.create(content: cont[rand(2)])
-end
+# 12.times do |i|
+#     Type.create(content: cont[rand(2)])
+# end
 puts "vita type"
 
 12.times do |i|
-    Product.create(article_id: rand(Article.first.id .. Article.last.id), type_id: rand(Type.first.id .. Type.last.id), price: 100)
+    Product.create(article_id: rand(Article.first.id .. Article.last.id), price: 100)
 end
 puts "product create"
 

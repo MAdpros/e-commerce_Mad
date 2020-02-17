@@ -1,6 +1,10 @@
 
 <%= @typ.content%></br>
-<%= image_tag (@arti.image_url)%>
+ <% if @arti.image_url == nil %>
+ <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
+ <%else%>
+ <%= image_tag (@arti.image_url), class:"rounded-circle tail" %>
+ <%end%>
 <%=@arti.id %>/
 <%=@product.price %>
 <%= link_to 'Edit', edit_product_path(@product) %> |

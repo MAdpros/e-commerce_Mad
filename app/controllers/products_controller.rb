@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all
-    @article = Article.where(params[:@product])
+    @article = Article.find_by(params[:id])
+    @type = Type.all
   end
 
   def show
@@ -32,8 +33,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
+        format.html { redirect_to @product, notice: 'product was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -44,8 +45,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
+        format.html { redirect_to @product, notice: 'product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:article_id, :type_id, :price)
+      params.require(:product).permit(:article_id, :type_id, :price, :disponibility)
     end
 end
