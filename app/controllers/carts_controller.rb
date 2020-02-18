@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_manager!, only: [:edit, :update]
+  #  before_action :authenticate_manager!, only: [:edit, :update]
 
   # GET /carts
   # GET /carts.json
@@ -12,6 +12,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   # GET /carts/1
   # GET /carts/1.json
   def show
+    #  @line_item = LineItem.find(params[:id])
   end
 
   # GET /carts/new

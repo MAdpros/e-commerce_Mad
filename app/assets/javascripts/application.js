@@ -16,10 +16,3 @@
 //= require turbolinks
 //= require_tree .
 
-jQuery(function ($) {
-  $('#mirror').text($('#alice').val());
-
-  $('#alice').on('input', function () {
-    $('#mirror').text($('#alice').val() * $('#prix').val());
-  });
-});

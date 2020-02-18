@@ -81,8 +81,8 @@
      <%# lien modal %>
      <%= link_to home_path(article.id), remote: true do %>
       
-      <% if article.image_url == nil %>
-      <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
+      <% if article.picture.attached? %>
+      <%= image_tag (article.picture), class:"rounded-circle tail"%>
       <%else%>
         <%= image_tag (article.image_url), class:"rounded-circle tail" %>
         <%end%>

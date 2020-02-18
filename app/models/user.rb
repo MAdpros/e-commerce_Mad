@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   def welcome_send
-UserMailer.welcome_email(self).deliver_now
-end
+    UserMailer.welcome_email(self).deliver_now
+  end
 
 end

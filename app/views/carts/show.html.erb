@@ -13,10 +13,13 @@
   <% @cart.line_items.each do |item|%>
     <tr>
       <td class="spacecol"><%=image_tag (Article.find(item.product.article_id).image_url), class:"imagecolcontent"%></td>
-      <td><%= item.quantity%></td>
+      <td><%= link_to "-", decrease_line_item_path(product_id: item.product), class:"btn btn-danger" %>
+        <%= item.quantity%>
+        <%= link_to "+", increase_line_item_path(product_id: item.product), class:"btn btn-success" %>
+      </td>
       <td><%= number_to_currency(item.total, unit:"euro", separator:",", format: "%n %u")%></td>
       <td><a href="/line_items/<%= item.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">Enlever du panier</a></td>
-    </tr>
+    </%=>
      <%end%>
   </tbody>
 </table>
@@ -29,3 +32,4 @@
 
  <!-- 
  <p id="mirror"></p> -->
+ 

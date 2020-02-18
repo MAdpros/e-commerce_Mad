@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        article_params = params.require(:article).permit(:title, :season, :description, :image_url, :origin)
+        article_params = params.require(:article).permit(:title, :season, :description, :image_url, :origin, :picture)
        @article = Article.create(article_params)
        redirect_to root_path
     end
@@ -22,15 +22,15 @@ class ArticlesController < ApplicationController
 
     def update
         @article = Article.find(params[:id])
-        article_params = params.require(:article).permit(:title, :season, :description, :image_url, :origin)
+        article_params = params.require(:article).permit(:title, :season, :description, :image_url, :origin, :picture)
         @article.update(article_params)
         redirect_to root_path
     end
 
     def show
-        @articl = Article.find(params[:id])
-        @article = Article.all
-        @article = @article[0..3]
+        @article = Article.find(params[:id])
+        @articlee = Article.all
+        @articlee = @articlee[0..3]
         
     end
 
