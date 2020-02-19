@@ -9,13 +9,14 @@ class HomeController < ApplicationController
     @product = @articl.Products.ids
     @produit = Product.find(@product)
 
-    @produit.each do |produit|
-      @article = produit.article_id
-      @arti = Article.find(@article)
+
+    # @produit.each do |produit|
+    #   @article = produit.article_id
+    #   @arti = Article.find(@article)
       
-      @type = produit.type_id
-      @typ = Type.find(@type)
-    end
+    #   @type = produit.type_id
+    #   @typ = Type.find(@type)
+    # end
  
     respond_to do |format|
       format.js

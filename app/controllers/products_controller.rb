@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     @product = Product.all
     @article = Article.find_by(params[:id])
-    @type = Type.all
+    @type = Type.find_by(params[:id])
   end
 
   def show
