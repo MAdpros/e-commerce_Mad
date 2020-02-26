@@ -1,0 +1,12 @@
+
+<div id="comment-<%= comment.id%>">
+  [<%= comment.created_at.strftime("%I:%M %p; %d-%m-%y")%>] 
+  <%= comment.user.username%> :
+  <%= comment.body%> 
+  <% if current_user && current_user == comment.user %>
+    <%= link_to "", article_comment_path(@article, comment), method: :delete, remote: true, class:"place fa fa-trash" %>
+      <hr>
+  <% end %>
+
+ 
+</div>

@@ -8,7 +8,7 @@
 
 Article.destroy_all
 Type.destroy_all
-Cart.destroy_all
+# Cart.destroy_all
 Transit.destroy_all
 Manager.destroy_all
 Administrator.destroy_all
@@ -31,12 +31,12 @@ puts "vita article"
 # 12.times do |i|
 #     Type.create(content: cont[rand(2)])
 # end
-puts "vita type"
+# puts "vita type"
 
-12.times do |i|
-    Product.create(article_id: rand(Article.first.id .. Article.last.id), price: 100)
-end
-puts "product create"
+# 12.times do |i|
+#     Product.create(article_id: rand(Article.first.id .. Article.last.id), price: 100)
+# end
+# puts "product create"
 
 3.times do |i|
     Transit.create(name: trans[rand(0..2)], mode: mode[1], price: prix[rand(0..2)])

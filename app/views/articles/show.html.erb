@@ -12,29 +12,41 @@
     <%if @article.picture.attached?%>
       <%= image_tag (@article.picture), class:"img-fluid tailimg"%>
       <%else%>
-      pas de photo
+     <% if @article.image_url == nil %>
+     <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
+     <%else%>
+     <%= image_tag (@article.image_url), class:"img-fluid tailimg" %>
+     <%end%>
         <%# image_tag (@article.image_url), class:"img-fluid tailimg" %>
         <%end%>
-        <%= form_tag article_pictures_path(@article), multipart: true do %>
-        <%= file_field_tag :picture %>
-        <%= submit_tag "mettre à jour" %>
+
+        <% if current_user == current_manager %>
+          <%= form_tag article_pictures_path(@article), multipart: true do %>
+          <%= file_field_tag :picture %>
+          <%= submit_tag "mettre à jour" %>
+        <% end %>
+        
         <% end %>
     </div>
 
     <div class="col-md-6 haut">
     <h1 class="my-4">
-    <small>histoire</small>
+    <small>Avis</small>
   </h1>
-      <p class="scroltext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, lacus sed volutpat hendrerit, dolor neque vehicula neque, at imperdiet magna mi sed lorem. Phasellus sollicitudin volutpat justo. Nunc turpis mi, facilisis in ligula at, blandit aliquam elit. Proin a pharetra nunc, sed consectetur nisi. Fusce auctor, lacus at euismod scelerisque, elit orci ultricies lorem, et efficitur erat orci auctor nisi. Fusce tempor, felis a rhoncus egestas, mauris metus facilisis sem, ut interdum mauris justo non odio. Vestibulum rhoncus libero leo, sit amet sollicitudin ante consectetur non. Nam aliquet in libero non faucibus.
+      <!-- <div class="scroltext"> -->
+        <%= form_with model: [@article, @comment] do |f| %>
+        <%= f.text_field :body %>
+        <%= f.submit "Valider" %>
+        <%end%>
 
-Nulla sagittis, tortor a efficitur volutpat, massa est feugiat mauris, nec tristique turpis enim semper augue. Duis gravida nisi vel blandit auctor. Maecenas id mollis dui. Morbi pellentesque risus est, at dignissim nisi pellentesque sit amet. Cras at sem posuere diam aliquet rutrum. Sed ultrices placerat nulla varius aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent faucibus pharetra velit lacinia feugiat. Praesent quis commodo lacus, a posuere urna. Pellentesque dignissim nulla vitae interdum luctus. In pretium sem in ex vestibulum maximus. Ut ornare nunc quis velit mollis, at ornare sapien efficitur. Nam cursus cursus magna id suscipit. Nullam ligula odio, aliquam non auctor eu, malesuada a erat. Sed sem nisi, sagittis eget velit et, rutrum dignissim lorem.
+        <div id="comment_pane">
+          <% @comments.each do |comment|%>
+          <%= render "comments/comment", comment: comment%>
+          <%end%>
+        </div>
 
-Suspendisse ut nulla in erat hendrerit ullamcorper ullamcorper nec erat. Morbi efficitur maximus tortor a lobortis. Donec condimentum felis ac nunc malesuada semper. Interdum et malesuada fames ac ante ipsum primis in faucibus. In non eros eget magna sagittis finibus vel vitae sapien. Suspendisse quis ultricies est. Pellentesque et lectus faucibus, mattis massa et, interdum metus. Fusce nec justo scelerisque, tincidunt diam non, tempus tellus.
-
-Phasellus risus quam, finibus ac molestie a, imperdiet eget felis. Nam interdum sagittis nisi ut condimentum. Cras mattis suscipit ligula ac facilisis. Fusce tempus orci ut lacus tincidunt, quis molestie nisi facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eleifend augue diam, non porta elit tempor non. Donec eget dui in massa interdum viverra hendrerit a mi. Sed cursus pharetra eleifend. Nunc eget quam porta, auctor est id, porta sem.
-
-Aenean nec leo eget diam hendrerit placerat. Nulla sed diam blandit, tincidunt odio vel, sodales dui. Suspendisse mollis laoreet felis eu faucibus. Pellentesque lacus nisl, eleifend vel efficitur ac, pulvinar non elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas tempus, magna sodales vulputate pretium, tellus nulla consectetur diam, id tempus felis tellus sed urna. Nunc sit amet nisi in odio tempor ornare. Quisque vehicula urna nisi, eget dignissim justo aliquet at.</p>
-
+         <%= link_to "voir tous les avis", article_comments_path(@article)%>
+        <!-- </div> -->
     </div>
 
      <div class="col-md-6">
@@ -98,13 +110,13 @@ Aenean nec leo eget diam hendrerit placerat. Nulla sed diam blandit, tincidunt o
 
   <div class="row">
 
-<% @articlee.each do |articlee|%>
+<% @articlee.each do |article|%>
     <div class="col-md-3 col-sm-6 mb-4">
-      <a href="/articlees/<%= articlee.id%>">
-            <% if articlee.image_url == nil %>
+      <a href="/articles/<%= article.id%>">
+            <% if article.image_url == nil %>
       <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
       <%else%>
-        <%= image_tag (articlee.image_url), class:"img-fluid tailimg" %>
+        <%= image_tag (article.image_url), class:"img-fluid tailimg" %>
         <%end%>
           </a>
     </div>

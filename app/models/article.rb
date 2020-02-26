@@ -4,5 +4,7 @@ class Article < ApplicationRecord
     has_many :Products
     has_many :types, through: :Products
 
+    has_many :comments, dependent: :destroy
+
    
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :comments
   devise_for :managers
   resources :liners
   resources :deliveries
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
      resources :pictures, only: [:create]
   end
 
+    resources :articles do
+      resources :comments
+    end
   resources :types
   resources :products
   resources :charges

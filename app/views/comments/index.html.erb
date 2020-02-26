@@ -1,0 +1,103 @@
+
+       <%#= link_to 'Show', article_comment_path(@article, comment) %>
+      <%#= link_to 'Edit', edit_article_comment_path(@article, comment) %>
+     
+          <%#= link_to 'Destroy', article_comment_path(@article, comment), method: :delete, remote: true %>
+ 
+
+<%#= link_to 'New Comment', new_article_comment_path(@article) %>
+
+
+<!-- debut commentaire -->
+
+<div class="container">
+<h2 class="text-center"><%= @article.title%></h2>
+
+<div class="d-flex justify-content-between">
+  <div>
+    <%= image_tag @article.image_url%>
+  </div>
+  <div>
+   
+  </div>
+  <div>
+    
+  </div>
+</div>
+<hr>
+<br>
+<br>
+  <!-- comment -->
+
+  <%= form_with model: [@article, @comment] do |f| %>
+  <%= f.text_field :body, placeholder: "Votre avi" %>
+  <%= f.submit "Valider" %>
+  <%end%>
+
+</div>
+
+<br>
+<br>
+  <!-- comment -->
+
+
+ <% @comments.each do |comment| %>
+<div class="container">
+  <div id="comment-<%= comment.id%>">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-1">
+          <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+          <p class="text-secondary text-center"></p>
+        </div>
+        <div class="col-md-10">
+          <p>
+            <a class="float-left"
+              href="#"><strong><%= comment.user.username%></strong></a>
+              :<%= comment.created_at.strftime("%I:%M %p; %d-%m-%y")%>
+            <!-- <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+            <span class="float-right"><i class="text-warning fa fa-star"></i></span> -->
+
+            <% if current_user && current_user == comment.user %>
+            <%= link_to "", article_comment_path(@article, comment), method: :delete, remote: true, class:"float-right fa fa-trash" %>
+            <% end %>
+          </p>
+          <div class="clearfix"></div>
+          <p><%= comment.body %></p>
+          <!-- <p>
+            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+          </p> -->
+        </div>
+      </div>
+      <!-- <div class="card card-inner">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+              <p class="text-secondary text-center">15 Minutes Ago</p>
+            </div>
+            <div class="col-md-10">
+              <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman
+                    Akash</strong></a></p>
+              <p>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+                including versions of Lorem Ipsum.</p>
+              <p>
+                <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+</div>
+ <% end %>

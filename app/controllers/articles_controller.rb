@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:edit, :show, :update]
     before_action :authenticate_manager!, only: [:create, :edit, :update, :destroy]
 
     def index
@@ -17,20 +18,21 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])
     end
 
     def update
-        @article = Article.find(params[:id])
         article_params = params.require(:article).permit(:title, :season, :description, :image_url, :origin, :picture)
         @article.update(article_params)
         redirect_to root_path
     end
 
     def show
-        @article = Article.find(params[:id])
         @articlee = Article.all
         @articlee = @articlee[0..3]
+
+        @comment = Comment.new
+        @commente = @article.comments.order(created_at: :desc)
+        @comments = @commente[0..5]
         
     end
 
@@ -38,5 +40,11 @@ class ArticlesController < ApplicationController
         @articl = Article.find(params[:id])
         @articl.destroy
         redirect_to root_path
+    end
+
+    private
+
+    def set_article
+        @article = Article.find(params[:id])
     end
 end
