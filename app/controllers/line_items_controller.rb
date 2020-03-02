@@ -54,16 +54,19 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.remove_product(product)
 
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to cart_path, notice: 'Line item was successfully updated.' }
-        format.js
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
+    @line_item.save
+    redirect_back(fallback_location: @cart)
+
+    # respond_to do |format|
+    #   if @line_item.save
+    #     format.html { redirect_to cart_path, notice: 'Line item was successfully updated.' }
+    #     format.js
+    #     format.json { render :show, status: :ok, location: @line_item }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @line_item.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def increase

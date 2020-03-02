@@ -97,14 +97,13 @@
 }
 
 .tail{
-    width:140px;
-    height:140px;
+    width:100%;
+    height:100%;
 }
 
 // article
 .taildiv{
-    height: 25%;
-    margin-bottom: 30px;
+    color: white;
 }
 
 .tailsp{
@@ -140,4 +139,154 @@
 
 .formqtt {
     width: 20%;
+}
+
+
+// post
+
+// /********* Superposition simple de texte sur une image *******/
+// /* Conteneur principal */
+// .overlay-image {
+//     position: relative;
+//     width: 100%;
+// }
+
+// /* Image originale */
+// .overlay-image .image {
+//     display: block;
+//     width: 100%;
+//     height: auto;
+// }
+
+// /* Texte original */
+// .overlay-image .text {
+//     color: #fff;
+//     font-size: 30px;
+//     line-height: 1.5em;
+//     text-shadow: 2px 2px 2px #000;
+//     text-align: center;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 100%;
+// }
+
+// .overlay-image .normal {
+//     transition: .5s ease;
+// }
+
+// .overlay-image:hover .normal {
+//     opacity: 0;
+// }
+
+// .overlay-image .hover {
+//     background-color: rgba(0, 0, 0, 0.5);
+// }
+
+// /********* Hover image et texte *******/
+// /* Overlay */
+// .overlay-image .hover {
+//     position: absolute;
+//     top: 0;
+//     height: 100%;
+//     width: 100%;
+//     opacity: 0;
+//     transition: .5s ease;
+// }
+
+// /* Apparition overlay sur passage souris */
+// .overlay-image:hover .hover {
+//     opacity: 1;
+// }
+
+
+.containere {
+    
+    width: 100%;
+    height: 70%;
+}
+
+ .cont {
+     position: relative;
+     height: 30%;
+     width: 100%;
+ }
+
+.image {
+    display: block;
+    width: 100%;
+    height: 10%;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(9, 10, 9, 0.5);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+}
+
+
+
+.cont:hover
+.overlay {
+    height: 100%;
+    width: auto;
+}
+.containere:hover
+.overlay {
+    height: 100%;
+    width: auto;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.right{
+    float: right;
+}
+
+.iconcolor{
+    color: rgb(146, 0, 0);
+}
+
+.infocolor{
+    color: rgb(3, 70, 13);
+}
+
+.spacemarg{
+    margin-bottom: 60px;
+}
+
+.ligneimage{
+    width: 25%;
+    margin-left: 38%;
+    margin-bottom: 4%;
+}
+
+.topavis{
+    margin-top: 10px;
+}
+
+.coloravis{
+    color: rgb(16, 17, 16);
 }

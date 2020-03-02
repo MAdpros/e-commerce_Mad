@@ -62,60 +62,78 @@
   </div>
 
 
-  <!-- page article -->
-<!-- <input id="alice" type="number" step="any" value="99">
-
-<p id="mirror"></p> -->
-
 
   <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
+    <div>
+      <h2 class="center">Nos produits </h2>
+      <%= image_tag "ligne1.png", class:"ligneimage"%>
+    </div>
+    
+    
     <div class="row">
-
       <%# debut de l'article %>
       <% @article.each do |article|%>
-      
-      <div class="col-lg-4">
-     
-     <%# lien modal %>
-     <%= link_to home_path(article.id), remote: true do %>
-      
-      <% if article.picture.attached? %>
-      <%= image_tag (article.picture), class:"rounded-circle tail"%>
-      <%else%>
-        <%= image_tag (article.image_url), class:"rounded-circle tail" %>
-        <%end%>
-     <%end%>
-
-        <h2><%= article.title %></h2>
-        <%= article.id%>
-        <div class="taildiv">
-        <p class="tailsp"><%= article.description%></p>
-        </div>
-
+            <%# lien modal %>
         <%if current_manager %>
-       <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
-      <a href="articles/<%=article.id%>" data-method="delete", data-confirm="are you sur?"><i class="far fa-trash-alt"></i></a>
-     
-      <%end%>
-       <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
-      <a href="<%= article_comments_path(article)%>">
-        <p>(<%= pluralize(article.comments.count, "Avi") %>)</p>
-      </a>
+          <div class="col-lg-4">
+            <%= link_to home_path(article.id), remote: true do %>
+              <% if article.picture.attached? %>
+                <%= image_tag (article.picture), class:"rounded-circle tail"%>
+              <%else%>
+                <%= image_tag (article.image_url), class:"rounded-circle tail" %>
+              <%end%>
+            <%end%>
 
-
-        <%# <i class="fas fa-shopping-basket"></i>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a> %>
-      </div><!-- /.col-lg-4 -->
-    <%# <% article.image_url.length%>
-       
-<%# <%= link_to 'View Post', home_path(article.id),remote: true %> 
-       
+              <h2><%= article.title %></h2>
+              <%= article.id%>
+              <!-- <div class="taildiv">
+              <p class="tailsp"><%= article.description%></p>
+              </div> -->
+                <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
+                <a href="articles/<%=article.id%>" data-method="delete", data-confirm="are you sur?"><i class="far fa-trash-alt"></i></a>
+                <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
+                <a href="<%= article_comments_path(article)%>">
+              <p>(<%= pluralize(article.comments.count, "Avi") %>)</p>
+                </a>
+          </div>
+        <% else %>
+          <div class="col-3 spacemarg">
+            <div class="containere">
+              <%= link_to home_path(article.id), remote: true do %>
+              <% if article.picture.attached? %>
+              <%= image_tag (article.picture), class:"tail"%>
+              <%else%>
+              <%= image_tag (article.image_url), class:"tail" %>
+              <%end%>
+              <%end%>
+              <div class="cont">
+                <p class="center"><%= article.title %></p>
+                <div class="overlay">
+                  <div class="text">
+                    <div class="taildiv tailsp">
+                      <%= link_to home_path(article.id), remote: true do %>
+                      <i class="far fa-plus-square  iconcolor"></i>
+                      <%end%>
+                      <a href="articles/<%=article.id%>"><i class="fas fa-info-circle infocolor"></i></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="center topavis">
+                  <a href="<%= article_comments_path(article)%>", class="coloravis">
+                    (<%= pluralize(article.comments.count, "Avi") %>)
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        <%end%>
       <%end%>
-      <%# fin de l'article %>
     </div>
-      <!-- /.row -->
+
+      <%# fin de l'article %>
+  
 
     <!-- START THE FEATURETTES -->
 
