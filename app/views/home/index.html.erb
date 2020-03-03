@@ -78,9 +78,9 @@
           <div class="col-lg-4">
             <%= link_to home_path(article.id), remote: true do %>
               <% if article.picture.attached? %>
-                <%= image_tag (article.picture), class:"rounded-circle tail"%>
+                <%= image_tag (article.picture), class:"rounded-circle tailimgmanager"%>
               <%else%>
-                <%= image_tag (article.image_url), class:"rounded-circle tail" %>
+                <%= image_tag (article.image_url), class:"rounded-circle tailimgmanager" %>
               <%end%>
             <%end%>
 

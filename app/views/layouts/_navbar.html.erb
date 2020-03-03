@@ -21,10 +21,16 @@
         </li>
          <% if manager_signed_in?%>
          <li class="nav-item">
-           <a class="nav-link" href="/managers/sign_out" data-method="delete">Se deconnecter</a>
+           <a class="nav-link" href="/products/new">Créer produit</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="/products/new">Créer produit</a>
+           <a class="nav-link" href="/types/new">Créer type</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/articles/new">Créer articles</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/managers/sign_out" data-method="delete">Se deconnecter</a>
          </li>
          <%end%>
         <% if user_signed_in?%>

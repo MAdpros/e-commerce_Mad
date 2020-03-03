@@ -15,6 +15,7 @@
                 </div>
                 <div>
                   <p class="listprod"><%=produit.id%></p>
+                  <p>(<%= produit.likes.count %>) <i class="fas fa-heart"></i> </p>
                   <p class="listprod"><%=produit.article.title%></p>
                   <%if produit.type.content == "Vrac" %>
                   <p class="listprod"><%= produit.price%> euros/kg</p>

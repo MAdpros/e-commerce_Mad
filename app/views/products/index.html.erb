@@ -1,16 +1,28 @@
 
+<div class="container">
+      <div class="row">
+         <%@product.each do |product|%>
+         <div class="col-lg-4">
+            <%= image_tag (product.article.image_url), class:"rounded-circle tailimgmanager"%>
+            <h2><%= product.type.content%></h2>
+           <%= link_to 'View post', product_path(product.id) %> /
+           <%= link_to 'View Article', article_path(product.article_id) %> </br>
+          
+           <% if current_user %>
+                 <% pre_like = product.likes.find { |like| like.user_id == current_user.id} %>
+                 <% if pre_like %>
+                 <%= link_to '', product_like_path(product, pre_like), method: :delete, class:"fas fa-heart zomm" %>
+                 <% else %>
+                 <%= link_to'', product_likes_path(product), method: :post, class:"far fa-heart zomm" %>
+                 <% end %>
+           <% end %>
+           <p><%= product.likes.count %> <i class="fas fa-heart"></i></p>
+         
+         </div>
 
-<%@product.each do |product|%>
-         <%= product.type.content%> /
-         <%= product.article.title%> /
-         <%= product.article.image_url%> /
-         <%= link_to 'View Post', product_path(product.id) %> /
-         <%= link_to 'View Article', article_path(product.article_id) %> </br>
-      <% end %>
-  
+<% end %>
+      </div>
 
-
-
-
+</div>
 
 

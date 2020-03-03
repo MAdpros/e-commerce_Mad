@@ -1,10 +1,11 @@
 
 <%= @typ.content%></br>
  <% if @arti.image_url == nil %>
- <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
+ <%= image_tag ("fond.jpg"), class:"rounded-circle tailleimgmanager"%>
  <%else%>
- <%= image_tag (@arti.image_url), class:"rounded-circle tail" %>
+ <%= image_tag (@arti.image_url), class:"rounded-circle tailleimgmanager" %>
  <%end%>
 <%=@arti.id %>/
 <%=@product.price %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
+<p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
