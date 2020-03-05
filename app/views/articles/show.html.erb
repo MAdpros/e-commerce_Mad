@@ -33,11 +33,14 @@
     <h1 class="my-4">
     <small>Avis</small>
   </h1>
-      <!-- <div class="scroltext"> -->
-        <%= form_with model: [@article, @comment] do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit "Valider" %>
-        <%end%>
+     
+  
+  <!-- avis global -->
+
+      <div>
+        <%=render 'raty.html.erb' %>
+      </div>
+      <hr>
 
         <div id="comment_pane">
           <% @comments.each do |comment|%>
@@ -100,6 +103,12 @@
     </tr>
   </tbody>
 </table>
+
+<hr>
+
+  <div>
+    <h2>Conditionnement</h2>
+  </div>
     </div>
 
   </div>
@@ -110,7 +119,7 @@
 
   <div class="row">
 
-<% @articlee.each do |article|%>
+  <% @articlee.each do |article|%>
     <div class="col-md-3 col-sm-6 mb-4">
       <a href="/articles/<%= article.id%>">
             <% if article.image_url == nil %>
@@ -120,9 +129,10 @@
         <%end%>
           </a>
     </div>
-<%end%>
+  <%end%>
 
   </div>
-  <!-- /.row -->
-
+  
+  <%= link_to 'voir', articles_path, class:"btn btn-outline-primary"%>
 </div>
+

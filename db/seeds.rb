@@ -22,7 +22,7 @@ prix = [100, 200, 300, 400, 500, 600]
 
 Manager.create(email: "madepices@manager.com", password: "azerty")
 
-6.times do |i|
+8.times do |i|
    Article.create(title: Faker::Dessert.flavor, description: Faker::Quote.matz, season: Faker::Nation.language, origin: Faker::Nation.nationality, image_url: img[rand(5)])
 end
 

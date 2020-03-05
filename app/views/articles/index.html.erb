@@ -1,31 +1,57 @@
 
 
 <div class="container marketing">
-   <h2>Tous les articles </h2>
+
+   <div>
+     <h2 class="center">Tout nos produits </h2>
+     <%= image_tag "ligne1.png", class:"ligneimage"%>
+   </div>
   <div class="row">
     <%# debut de l'article %>
     <% @article.each do |article|%>
-      <div class="col-lg-4">
-        <%# lien modal %>
-        <%= link_to home_path(article.id), remote: true do %>
-          <% if article.image_url == nil %>
-            <%= image_tag ("fond.jpg"), class:"rounded-circle tail"%>
-          <%else%>
-            <%= image_tag (article.image_url), class:"rounded-circle tail" %>
-          <%end%>
-        <%end%>
-        <h2><%= article.title %></h2>
-          <%= article.id%>
-        <div class="taildiv">
-          <p class="tailsp"><%= article.description%></p>
-        </div>
-          <%if current_manager %>
-          <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
-          <a href="articles/<%=article.id%>" data-method="delete" , data-confirm="are you sur?"><i
-              class="far fa-trash-alt"></i></a>
-          <%end%>
-        <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
-      </div>
+       <div class="col-3 spacemarg">
+         <div class="containere">
+           <%= link_to home_path(article.id), remote: true do %>
+           <% if article.picture.attached? %>
+           <%= image_tag (article.picture), class:"tail"%>
+           <%else%>
+           <%= image_tag (article.image_url), class:"tail" %>
+           <%end%>
+           <%end%>
+           <div class="cont">
+             <p class="center"><%= article.title %></p>
+             <div class="overlay">
+               <div class="text">
+                 <div class="taildiv tailsp">
+                   <%= link_to home_path(article.id), remote: true do %>
+                   <i class="far fa-plus-square  iconcolor"></i>
+                   <%end%>
+                   <a href="articles/<%=article.id%>"><i class="fas fa-info-circle infocolor"></i></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div>
+             <p class="center topavis">
+
+               <span class="noteavis">
+                 <%if article.comments.blank?%>
+                 <%= average_comment = 0%>
+                 <%else%>
+                 <%= average_comment = article.comments.average(:rating).round(2)%>
+                 <%end%>
+               </span>
+               <span style="color: rgb(239, 184, 3);">
+                 <i class="fas fa-star"></i>
+               </span>
+
+               (<a href="<%= article_comments_path(article)%>" , class="coloravis">
+                 <%= pluralize(article.comments.count, "Avi") %>
+               </a>)
+             </p>
+           </div>
+         </div>
+       </div>
     <%end%>
   </div>
 </div>

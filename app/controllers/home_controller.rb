@@ -2,8 +2,7 @@ class HomeController < ApplicationController
   include CurrentCart
 
   def index
-    @article = Article.all
-    # @cart = Cart.find(current_user.cart.id)
+    @articles = Article.all 
   end
 
   def show

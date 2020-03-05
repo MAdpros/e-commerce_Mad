@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_141232) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "rating"
     t.text "body"
     t.bigint "user_id"
     t.bigint "article_id"

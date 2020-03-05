@@ -34,6 +34,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     redirect_back(fallback_location: @comment)
+   
     # respond_to do |format|
     #   if @comment.save
     #     format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -79,7 +80,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:body, :article_id)
+      params.require(:comment).permit(:body, :rating, :article_id)
     end
 
     def set_article

@@ -17,10 +17,10 @@
           <h5 class="mb-3"><%= current_user.username%></h5>
           <div class="row">
             <div class="col-md-6">
-              <h6><%= @user.last_name%></h6>
-              <h6><%= @user.first_name%></h6>
+              <h6>Nom: <%= @user.last_name%></h6>
+              <h6>Prénon: <%= @user.first_name%></h6>
               <p>
-                <%= @user.adress%>.
+                Adresse: <%= @user.adress%>
               </p>
                <a href="/users/<%= current_user.id%>/edit"
                  class="nav-link">Edit</a>

@@ -1,11 +1,30 @@
 
-<%= @typ.content%></br>
- <% if @arti.image_url == nil %>
- <%= image_tag ("fond.jpg"), class:"rounded-circle tailleimgmanager"%>
- <%else%>
- <%= image_tag (@arti.image_url), class:"rounded-circle tailleimgmanager" %>
- <%end%>
-<%=@arti.id %>/
-<%=@product.price %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+<div class="container">
+  <h2><%= @arti.title%></br></h2>
+  <div class="d-flex">
+    <div class="pic-product-containt">
+      <% if @arti.image_url == nil %>
+        <%= image_tag ("fond.jpg"), class:"product-pic"%>
+      <%else%>
+        <%= image_tag (@arti.image_url), class:"product-pic" %>
+      <%end%>
+    </div>
+    
+    <div>
+      <%=@arti.id %>/
+      <%=@product.price %>
+      <% if current_manager %>
+          <%= link_to 'Edit', edit_product_path(@product) %> |
+      <% end %>
+
+      <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    </div>
+  </div>
+
+<hr>
+  <%= link_to "retour ", products_path %>
+  <hr>
+  <%= link_to "retour page d'accueil ", root_path %>
+  <hr>
+</div>

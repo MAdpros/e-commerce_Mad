@@ -32,8 +32,19 @@ class ArticlesController < ApplicationController
 
         @comment = Comment.new
         @commente = @article.comments.order(created_at: :desc)
-        @comments = @commente[0..5]
-        
+        @comments = @commente[0..2]
+
+        if @article.comments.blank?
+            @average_comment = 0
+        else
+            @average_comment = @article.comments.average(:rating).round(2)
+        end
+
+
+        # respond_to do |format|
+        #     format.js { render inline: "location.reload();" }
+        # end
+    
     end
 
     def destroy

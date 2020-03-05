@@ -72,7 +72,7 @@
     
     <div class="row">
       <%# debut de l'article %>
-      <% @article.each do |article|%>
+      <% @articles.each do |article|%>
             <%# lien modal %>
         <%if current_manager %>
           <div class="col-lg-4">
@@ -114,16 +114,29 @@
                       <%= link_to home_path(article.id), remote: true do %>
                       <i class="far fa-plus-square  iconcolor"></i>
                       <%end%>
-                      <a href="articles/<%=article.id%>"><i class="fas fa-info-circle infocolor"></i></i></a>
+                      <a href="articles/<%=article.id%>"><i
+                          class="fas fa-info-circle infocolor"></i></i></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <p class="center topavis">
-                  <a href="<%= article_comments_path(article)%>", class="coloravis">
-                    (<%= pluralize(article.comments.count, "Avi") %>)
-                  </a>
+                 <p class="center topavis">
+
+                <span class="noteavis">
+                 <%if article.comments.blank?%>
+                 <%= average_comment = 0%>
+                 <%else%>
+                 <%= average_comment = article.comments.average(:rating).round(2)%>
+                 <%end%>
+                 </span>
+                 <span style="color: rgb(239, 184, 3);">
+                   <i class="fas fa-star"></i>
+                 </span>
+               
+                  (<a href="<%= article_comments_path(article)%>", class="coloravis">
+                  <%= pluralize(article.comments.count, "Avi") %>
+                  </a>)
                 </p>
               </div>
             </div>

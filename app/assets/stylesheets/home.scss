@@ -283,15 +283,21 @@
     margin-bottom: 4%;
 }
 
-.topavis{
-    margin-top: 10px;
-}
-
-.coloravis{
-    color: rgb(16, 17, 16);
-}
-
 .tailimgmanager{
     width: 140px;
     height: 140px;
+}
+
+// avis
+
+.noteavis{
+    color: rgb(9, 221, 16);
+}
+
+.topavis {
+    margin-top: 10px;
+}
+
+.coloravis {
+    color: rgb(240, 10, 10);
 }

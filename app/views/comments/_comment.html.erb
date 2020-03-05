@@ -2,11 +2,25 @@
 <div id="comment-<%= comment.id%>">
   [<%= comment.created_at.strftime("%I:%M %p; %d-%m-%y")%>] 
   <%= comment.user.username%> :
-  <%= comment.body%> 
+   <div class="review-rating" data-score="<%= comment.rating%>">
+  </div>
+  <p><%= comment.body %>
+
   <% if current_user && current_user == comment.user %>
     <%= link_to "", article_comment_path(@article, comment), method: :delete, remote: true, class:"place fa fa-trash" %>
+    </p>
       <hr>
   <% end %>
 
  
 </div>
+
+  <script>
+    $('.review-rating').raty({
+      readOnly: true,
+      score: function () {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  </script>
