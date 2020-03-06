@@ -20,11 +20,14 @@
         <%# image_tag (@article.image_url), class:"img-fluid tailimg" %>
         <%end%>
 
-        <% if current_user == current_manager %>
-          <%= form_tag article_pictures_path(@article), multipart: true do %>
-          <%= file_field_tag :picture %>
-          <%= submit_tag "mettre à jour" %>
+        <% if manager_signed_in? %>
+           <% if current_user == current_manager %>
+           <%= form_tag article_pictures_path(@article), multipart: true do %>
+           <%= file_field_tag :picture %>
+           <%= submit_tag "mettre à jour" %>
+           <% end %>
         <% end %>
+       
         
         <% end %>
     </div>
