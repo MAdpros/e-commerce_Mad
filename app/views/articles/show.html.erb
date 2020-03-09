@@ -1,0 +1,141 @@
+<div class="container">
+
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-6 haut">
+    <h1 class="my-4">
+    <small><%= @article.title%></small>
+  </h1>
+    <%# if @article.image_url == nil %>
+    <%if @article.picture.attached?%>
+      <%= image_tag (@article.picture), class:"img-fluid tailimg"%>
+      <%else%>
+     <% if @article.image_url == nil %>
+     <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
+     <%else%>
+     <%= image_tag (@article.image_url), class:"img-fluid tailimg" %>
+     <%end%>
+        <%# image_tag (@article.image_url), class:"img-fluid tailimg" %>
+        <%end%>
+
+        <% if manager_signed_in? %>
+           <% if current_user == current_manager %>
+           <%= form_tag article_pictures_path(@article), multipart: true do %>
+           <%= file_field_tag :picture %>
+           <%= submit_tag "mettre à jour" %>
+           <% end %>
+        <% end %>
+       
+        
+        <% end %>
+    </div>
+
+    <div class="col-md-6 haut">
+    <h1 class="my-4">
+    <small>Avis</small>
+  </h1>
+     
+  
+  <!-- avis global -->
+
+      <div>
+        <%=render 'raty.html.erb' %>
+      </div>
+      <hr>
+
+        <div id="comment_pane">
+          <% @comments.each do |comment|%>
+          <%= render "comments/comment", comment: comment%>
+          <%end%>
+        </div>
+
+         <%= link_to "voir tous les avis", article_comments_path(@article)%>
+        <!-- </div> -->
+    </div>
+
+     <div class="col-md-6">
+    <h1 class="my-4">
+    <small>Fiche technique </small>
+  </h1>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary">This is a primary list group item</li>
+            <li class="list-group-item ">This is a secondary list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a success list group item</li>
+            <li class="list-group-item ">This is a danger list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a warning list group item</li>
+            <li class="list-group-item ">This is a info list group item</li>
+            <li class="list-group-item list-group-item-secondary">This is a light list group item</li>
+            <li class="list-group-item ">This is a dark list group item</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+    <h1 class="my-4">
+    <small>Valeurs nutritive</small>
+  </h1>
+     <table class="table">
+ 
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <div>
+    <h2>Conditionnement</h2>
+  </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related Projects</h3>
+
+  <div class="row">
+
+  <% @articlee.each do |article|%>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="/articles/<%= article.id%>">
+            <% if article.image_url == nil %>
+      <%= image_tag ("fond.jpg"), class:"img-fluid tailimg"%>
+      <%else%>
+        <%= image_tag (article.image_url), class:"img-fluid tailimg" %>
+        <%end%>
+          </a>
+    </div>
+  <%end%>
+
+  </div>
+  
+  <%= link_to 'voir', articles_path, class:"btn btn-outline-primary"%>
+</div>
+

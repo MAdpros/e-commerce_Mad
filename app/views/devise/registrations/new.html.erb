@@ -1,0 +1,97 @@
+<%# <h2>Sign up</h2> %>
+
+<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+  <%# <%= render "devise/shared/error_messages", resource: resource %> 
+
+  <%# <div class="field"> %>
+    <%# <%= f.label :email %>
+    <%# <%= f.email_field :email, autofocus: true, autocomplete: "email" %> 
+  <%# </div> %>
+
+  <%# <div class="field"> %>
+    <%# <%= f.label :password %> 
+    <%# <% if @minimum_password_length %> 
+    <%# <em>(<%= @minimum_password_length  characters minimum)</em> %>
+    <%# <% end %>
+    <%# <%= f.password_field :password, autocomplete: "new-password" %> 
+  <%# </div> %>
+
+  <%# <div class="field"> %>
+    <%# <%= f.label :password_confirmation %>
+    <%# <%= f.password_field :password_confirmation, autocomplete: "new-password" %> 
+  <%# </div> %>
+
+  <%# <div class="actions"> %>
+    <%# <%= f.submit "Sign up" %> 
+  <%# </div> %>
+<%# <% end %> 
+
+<%# <%= render "devise/shared/links" %> 
+
+<section class="sect">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+            <%= image_tag ("fond.jpg"), class:"clipimg"%>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Register</h5>
+         
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="form-label-group">
+            <%= render "devise/shared/error_messages", resource: resource %>
+            </div>
+              <div class="field form-label-group">
+                <%# <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus> %>
+                <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control", id:"inputUserame", placeholder:"Username"  %>
+                <%# <label for="inputUserame">Username</label> %>
+                <%= f.label :username, for:"inputUserame" %>
+              </div>
+
+              <div class="field form-label-group">
+                <%# <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required> %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"inputEmail", class:"form-control", placeholder:"Email" %>
+                <%# <label for="inputEmail">Email address</label> %>
+                <%= f.label :email, for:"inputEmail" %>
+              </div>
+              
+              <hr>
+
+              <div class="field form-label-group">
+                
+                  <%= f.password_field :password, autocomplete: "new-password", id:"inputPassword", class:"form-control", placeholder:"Password" %>
+                <%# <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> %>
+                <%# <label for="inputPassword">Password</label> %>
+                <%= f.label :password, for:"inputPassword" %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+              </div>
+              
+              <div class="field form-label-group">
+                <%# <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required> %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", id:"inputConfirmPassword", class:"form-control", placeholder:"Password" %>
+                <%# <label for="inputConfirmPassword">Confirm password</label> %>
+                <%= f.label :password_confirmation, for:"inputConfirmPassword" %>
+              </div>
+
+              <%# <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button> %>
+              <div class="actions">
+              <%= f.submit "Sign up", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+            </div>
+              <% end %>
+              <hr class="my-4">
+              <form class="form-signin">
+              <button class="btn btn-lg btn btn-outline-danger btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+              <button class="btn btn-lg btn btn-outline-success btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+            </form>
+            <hr class="my-4">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

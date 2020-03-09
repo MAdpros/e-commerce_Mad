@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Liners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Delivery</th>
+      <th>Transit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @liners.each do |liner| %>
+      <tr>
+        <td><%= liner.delivery %></td>
+        <td><%= liner.transit %></td>
+        <td><%= link_to 'Show', liner %></td>
+        <td><%= link_to 'Edit', edit_liner_path(liner) %></td>
+        <td><%= link_to 'Destroy', liner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Liner', new_liner_path %>

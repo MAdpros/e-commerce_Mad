@@ -1,0 +1,14 @@
+<%= form_with model: [@article, @comment] do |f| %>
+<div id="rating">
+  <%= f.label :rating, 'Note :' %>
+</div>
+<%= f.text_field :body %>
+<%= f.submit "Valider" %>
+<%end%>
+
+<script>
+  $('#rating').raty({
+    path: '/assets/',
+    scoreName: 'comment[rating]'
+  });
+</script>

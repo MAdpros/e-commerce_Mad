@@ -1,0 +1,36 @@
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">image produit</th>
+      <th scope="col">quantité</th>
+      <th scope="col">prix</th>
+      <th scope="col">supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @cart.line_items.each do |item|%>
+    <tr>
+      <td class="spacecol"><%=image_tag (Article.find(item.product.article_id).image_url), class:"imagecolcontent"%></td>
+      <td><%= link_to "-", decrease_line_item_path(product_id: item.product), class:"btn btn-danger" %>
+        <%= item.quantity%>
+        <%= link_to "+", increase_line_item_path(product_id: item.product), class:"btn btn-success" %>
+      </td>
+      <td><%= number_to_currency(item.total, unit:"euro", separator:",", format: "%n %u")%></td>
+      <td><a href="/line_items/<%= item.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">Enlever du panier</a></td>
+    </%=>
+     <%end%>
+  </tbody>
+</table>
+<p>  total : <span class="badge badge-info"><%= number_to_currency(@cart.total, unit:"euro", separator:",", format: "%n %u")%></p>
+<%= button_to "passer la commande", new_order_path, method: :get, class:"btn btn-primary mb-2"%>
+<%# <%= button_to "vider le panier", @cart, method: :delete, data:{confirm:"Êtes vous sûr?"}, class:"btn btn-danger" %> 
+<a href="/carts/<%= current_user.cart.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">vider le panier</a>
+<a href="/">back</a>
+
+ <!-- <input id="alice" type="number" step="any" value="99"> -->
+
+ <!-- 
+ <p id="mirror"></p> -->
+ 

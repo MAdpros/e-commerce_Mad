@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark static-top sticky-top colnav">
+  <div class="container">
+  <div class="logo">
+    <a href="/">
+          <%# <img src="http://placehold.it/150x50?text=Logo" alt=""> %>
+          <%= image_tag ("logo.png"), class:"sizelogo"%>
+        </a>
+      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Accueil
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+         <% if manager_signed_in?%>
+         <li class="nav-item">
+           <a class="nav-link" href="/products/new">Créer produit</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/types/new">Créer type</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/articles/new">Créer articles</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/managers/sign_out" data-method="delete">Se deconnecter</a>
+         </li>
+         <%end%>
+        <% if user_signed_in?%>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_out" data-method = "delete">Se deconnecter</a>
+        </li>
+         <li class="nav-item">
+           <a class="nav-link" href="/users/<%= current_user.id%>">Mon profil</a>
+         </li>
+        <%else%>
+        <% if current_manager%>
+
+        <%else%>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_up">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_in">Se connecter</a>
+        </li>
+        <%end%>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+  
+
+<div>
+<% if user_signed_in?%>
+<% if current_user.cart == nil %>
+<a href="/carts/new"> <i class="fas fa-shopping-basket panier">(0)<%= params[:notice] %></i></a>
+<%else%>
+  <a href="/carts/<%= current_user.cart.id%>"> <i class="fas fa-shopping-basket panier">(<%= current_user.cart.line_items.count%>)</i></a>
+  <%end%>
+  <%else%>
+ <a href="/users/sign_up"> <i class="fas fa-shopping-basket panier">(0)</i></a>
+  <%end%>
+</div>
+</nav>

@@ -50,6 +50,13 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "letter_opener"
+end
+
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
@@ -60,3 +67,16 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'table_print'
+gem 'faker'
+gem 'dotenv-rails'
+gem 'mailjet'
+gem 'stripe'
+gem 'jquery-rails'
+
+# gem administrateur trestle
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
