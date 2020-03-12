@@ -30,7 +30,8 @@
 
    <div class="form-group">
      <%= form.label :pays %>
-     <%= form.select :zone_id, options_for_select(@zone.collect{ |u| [u.name, u.id] })%>
+     
+     <%= form.select :zone_id, options_for_select(@zones.collect{ |u| [u.name, u.id] }.sort)%> 
    </div>
 
 

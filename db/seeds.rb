@@ -22,20 +22,21 @@ cont = ["Vrac", "Doypack","null"]
 prix = [100, 200, 300, 400, 500, 600]
 
 # Zone
-Zone1 = ["La Réunion", "Comores", "Maurice", "Mayotte", "Seychelles"]
-Zone2 = ["France", "Monaco", "Kenya", "Afrique du Sud"]
-Zone3 = ["Andorre", "Autriche", "Belgique", "Italie", "Island", "Irland", "Gibraltar", "Pays-bas", "Portugal", "Royaume-Uni", "Danemark", "Espagne", "Malte", "Luxemburg", "Allemagne", "liechtenstein", "Suède", "Suisse", "Tchéque", "Finland", "Norvege", "Vatican city"]
+zone1 = ["La Réunion", "Comores", "Maurice", "Mayotte", "Seychelles"]
+zone2 = ["France", "Monaco", "Kenya", "Afrique du Sud"]
+zone3 = ["Andorre", "Autriche", "Belgique", "Italie", "Island", "Irland", "Gibraltar", "Pays-bas", "Portugal", "Royaume-Uni", "Danemark", "Espagne", "Malte", "Luxemburg", "Allemagne", "Liechtenstein", "Suède", "Suisse", "Tchéque", "Finland", "Norvege", "Vatican city"]
 
-Zone1.length.times do |i|
-    Zone.create(name: Zone1[i].downcase)
+
+zone1.length.times do |i|
+    Zone.create(name: zone1[i])
 end
 
-Zone2.length.times do |i|
-    Zone.create(name: Zone2[i].downcase)
+zone2.length.times do |i|
+    Zone.create(name: zone2[i])
 end
 
-Zone3.length.times do |i|
-    Zone.create(name: Zone3[i].downcase)
+zone3.length.times do |i|
+    Zone.create(name: zone3[i])
 end
 
 Manager.create(email: "madepices@manager.com", password: "azerty")

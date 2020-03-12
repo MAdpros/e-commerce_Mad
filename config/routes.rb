@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :zones
   resources :comments
   devise_for :managers
   resources :liners

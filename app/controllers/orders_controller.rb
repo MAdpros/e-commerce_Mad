@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @zones = Zone.all
   end
 
   # GET /orders/1
@@ -19,7 +20,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @zone = Zone.all
+    @zones = Zone.all
+
+    
+    # @a = @zones + @zone
+      
+        
   end
 
   # GET /orders/1/edit
@@ -29,10 +35,9 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    # @zone = Zone.all
     @order = Order.new(order_params)
     @order.cart = @cart
-    # @order.zone_id = Zone.find_by(params[:id])
+
     
 
     respond_to do |format|
@@ -78,12 +83,12 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :zone_id)
+      params.require(:order).permit(:name, :address, :email, :zone_id, :zone_a_id)
     end
 
     def redirect_if_cart_is_empty
       if @cart.line_items.empty?
-        residrect_to root_path, notice: "Votre panier est vide"
+        redirect_to root_path, notice: "Votre panier est vide"
       end
     end
 end

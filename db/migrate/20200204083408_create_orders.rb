@@ -8,7 +8,6 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.references :cart
 
       t.belongs_to :zone, index: true
-
       t.timestamps
     end
   end
