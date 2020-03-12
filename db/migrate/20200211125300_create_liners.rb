@@ -4,6 +4,8 @@ class CreateLiners < ActiveRecord::Migration[5.2]
       t.belongs_to :delivery, foreign_key: true
       t.belongs_to :transit, foreign_key: true
 
+      t.belongs_to :order, index: true
+
       t.timestamps
     end
   end

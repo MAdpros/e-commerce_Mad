@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_141232) do
+ActiveRecord::Schema.define(version: 2020_03_10_085755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,9 +104,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_141232) do
   create_table "liners", force: :cascade do |t|
     t.bigint "delivery_id"
     t.bigint "transit_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["delivery_id"], name: "index_liners_on_delivery_id"
+    t.index ["order_id"], name: "index_liners_on_order_id"
     t.index ["transit_id"], name: "index_liners_on_transit_id"
   end
 
@@ -128,9 +130,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_141232) do
     t.string "email", null: false
     t.integer "status", default: 0, null: false
     t.bigint "cart_id"
+    t.bigint "zone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["zone_id"], name: "index_orders_on_zone_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -176,6 +180,12 @@ ActiveRecord::Schema.define(version: 2020_03_02_141232) do
     t.string "adress"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "zones", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

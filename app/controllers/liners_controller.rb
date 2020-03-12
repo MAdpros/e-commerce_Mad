@@ -18,6 +18,7 @@ class LinersController < ApplicationController
   # GET /liners/new
   def new
     @liner = Liner.new
+    @order = Order.all
   end
 
   # GET /liners/1/edit
@@ -27,9 +28,10 @@ class LinersController < ApplicationController
   # POST /liners
   # POST /liners.json
   def create
-    transit = Transit.find(params[:transit_id])
+    transit = Transit.find(params[:transit_id]) 
+    order = Order.find(params[:order_id])
     # @liner = @delivery.liners.new(transit: transit)
-    @liner = @delivery.restreint_transit(transit)
+    @liner = @delivery.restreint_transit(transit, order)
       
       
     respond_to do |format|
@@ -75,6 +77,6 @@ class LinersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liner_params
-      params.require(:liner).permit(:delivery_id, :transit_id)
+      params.require(:liner).permit(:delivery_id, :transit_id, :order_id)
     end
 end

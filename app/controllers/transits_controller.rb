@@ -11,11 +11,13 @@ class TransitsController < ApplicationController
         @transits = Transit.all
          @cart = Cart.find(current_user.cart.id)
     @liner = Liner.all
+     @order = Order.all
     else
     @delivery = Delivery.find(current_user.delivery.id)
      @transits = Transit.all
          @cart = Cart.find(current_user.cart.id)
     @liner = Liner.all
+     @order = Order.all
     end
   end
 

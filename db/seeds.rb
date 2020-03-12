@@ -12,6 +12,7 @@ Type.destroy_all
 Transit.destroy_all
 Manager.destroy_all
 Administrator.destroy_all
+Zone.destroy_all
 
 
 mode = ["Normal", "Rapide"]
@@ -19,6 +20,23 @@ trans = ["DHL", "Midex", "ASL"]
 img = ["baobab.png", "curcuma.png", "gingembre.png", "macis.jpg", "muscade.jpg", "voatsiperifery.jpg"]
 cont = ["Vrac", "Doypack","null"]
 prix = [100, 200, 300, 400, 500, 600]
+
+# Zone
+Zone1 = ["La Réunion", "Comores", "Maurice", "Mayotte", "Seychelles"]
+Zone2 = ["France", "Monaco", "Kenya", "Afrique du Sud"]
+Zone3 = ["Andorre", "Autriche", "Belgique", "Italie", "Island", "Irland", "Gibraltar", "Pays-bas", "Portugal", "Royaume-Uni", "Danemark", "Espagne", "Malte", "Luxemburg", "Allemagne", "liechtenstein", "Suède", "Suisse", "Tchéque", "Finland", "Norvege", "Vatican city"]
+
+Zone1.length.times do |i|
+    Zone.create(name: Zone1[i].downcase)
+end
+
+Zone2.length.times do |i|
+    Zone.create(name: Zone2[i].downcase)
+end
+
+Zone3.length.times do |i|
+    Zone.create(name: Zone3[i].downcase)
+end
 
 Manager.create(email: "madepices@manager.com", password: "azerty")
 

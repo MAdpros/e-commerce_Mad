@@ -31,7 +31,12 @@
            <td><%= link_to 'Destroy', transit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           <% if current_user.delivery == nil %>
-           <td><%= button_to "choisir", liners_path(transit_id: transit), class:"btn btn-outline-primary"%></td>
+       
+            <td>
+              <%= button_to "choisir", liners_path(transit_id: transit, order_id: @order.last), class:"btn btn-outline-primary"%>
+            </td>
+        
+           
            <%else%>
           <%end%>
 
@@ -64,7 +69,9 @@
            <td><%= link_to 'Destroy', transit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
              <% if current_user.delivery == nil %>
-             <td><%= button_to "choisir", liners_path(transit_id: transit), class:"btn btn-outline-primary"%></td>
+             <td>
+               <%= button_to "choisir", liners_path(transit_id: transit, order_id: @order.last), class:"btn btn-outline-primary"%>
+             </td>
              <%else%>
              <%end%>
          </tr>

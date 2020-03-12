@@ -28,6 +28,11 @@
     <%= form.email_field :email, class:"form-control" %>
   </div>
 
+   <div class="form-group">
+     <%= form.label :pays %>
+     <%= form.select :zone_id, options_for_select(@zone.collect{ |u| [u.name, u.id] })%>
+   </div>
+
 
   <div class="actions">
     <%= form.submit "Valider", class:"btn btn-outline-success" %>

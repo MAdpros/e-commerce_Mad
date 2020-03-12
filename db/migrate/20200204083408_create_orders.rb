@@ -7,6 +7,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :status, null: false, default: 0
       t.references :cart
 
+      t.belongs_to :zone, index: true
+
       t.timestamps
     end
   end
