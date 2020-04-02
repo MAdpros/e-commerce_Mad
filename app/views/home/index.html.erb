@@ -62,7 +62,58 @@
   </div>
 
 
+<!-- services -->
+<section class="features-section overflow-hidden border-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 margin-b-30">
+        <div class="feature-box-center text-center">
+          <i class="fas fa-truck sizeicon"></i>
+          <h4 class="text-capitalize">Livraison rapide </h4>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <!--/col-->
+      <div class="col-md-6 col-lg-3  margin-b-30">
+        <div class="feature-box-center text-center">
+          <i class="fas fa-credit-card sizeicon"></i>
+          <i class="fas fa-shield-alt"></i>
+          <h4 class="text-capitalize">Paiement sécurisé</h4>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <!--/col-->
+      <div class="col-md-6 col-lg-3  margin-b-30">
+        <div class="feature-box-center text-center">
+        <i class="fas fa-phone-volume sizeicon"></i>
+          <h4 class="text-capitalize">service client</h4>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <!--/col-->
+      <div class="col-md-6 col-lg-3 margin-b-30">
+        <div class="feature-box-center text-center">
+          <i class="fas fa-hand-holding-usd sizeicon"></i>
+          <h4 class="text-capitalize">Produit sélectionné</h4>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <!--/col-->
+    </div>
+  </div>
+</section>
+<!--end features section-->
 
+
+<div class="container">
   <div class="container marketing">
     <div>
       <h2 class="center">Nos produits </h2>
@@ -97,26 +148,28 @@
                 </a>
           </div>
         <% else %>
-          <div class="col-3 spacemarg">
+          <div class="col-sm-3 spacemarg">
             <div class="containere">
-              <%= link_to home_path(article.id), remote: true do %>
+               <a href="articles/<%=article.id%>">
               <% if article.picture.attached? %>
               <%= image_tag (article.picture), class:"tail"%>
               <%else%>
               <%= image_tag (article.image_url), class:"tail" %>
               <%end%>
-              <%end%>
+              </a>
               <div class="cont">
                 <p class="center"><%= article.title %></p>
                 <div class="overlay">
                   <div class="text">
                     <div class="taildiv tailsp">
-                      <%= link_to home_path(article.id), remote: true do %>
+                      <% link_to home_path(article.id), remote: true do %>
                       <i class="far fa-plus-square  iconcolor"></i>
                       <%end%>
-                      <a href="articles/<%=article.id%>"><i
-                          class="fas fa-info-circle infocolor"></i></i></a>
                     </div>
+                    <%= link_to home_path(article.id), remote: true do %>
+                   <p class="btn btn-success">Acheter</p>
+                    <%end%>
+                    
                   </div>
                 </div>
               </div>
@@ -144,6 +197,7 @@
         <%end%>
       <%end%>
     </div>
+  </div>
 
       <%# fin de l'article %>
   

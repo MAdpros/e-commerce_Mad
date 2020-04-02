@@ -13,14 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* navbar */
 .colnav{
-    background-color: #501504b3;
+    background-color: #230207d6;
 }
 
+.divmada{
+    width: 4%;
+}
 
-/* .yeld{
-    position: absolute;
-} */
+.sizemada{
+    width: 100%;
+}
 
 .alert{
    display: contents;
@@ -42,8 +48,45 @@
 
  .panier{
      color: rgb(10, 10, 10);
-     margin-right: 90px;
+      width: 10%;
  }
+
+ .harona {
+     width: 31%;
+     margin-bottom: 10px;
+ }
+
+ .count {
+     color: black;
+ }
+
+ @media only screen and (max-width: 768px) {
+    .logo{
+        width: 36%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .divmada {
+        width: 6%;
+    }
+
+    .harona {
+        width: 75%;
+        margin-bottom: 0px;
+    }
+
+    .count {
+    color: black;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 3px;
+    }
+
+}
+
+
+ /* footer */
 
 html {
     position: relative;
@@ -88,7 +131,7 @@ body {
 
 .sect {
     background: #007bff;
-    background: linear-gradient(to right, rgb(80, 14, 20), rgb(136, 4, 4));
+    background: linear-gradient(to right, rgb(31, 6, 8), rgb(216, 16, 16));
 }
 
 .card-signin {
@@ -239,4 +282,34 @@ body {
         position: absolute;
         clip: rect(4px, 323px, 732px, 4px);
     }
+}
+
+.hr {
+    /* centre verticalement les enfants entre eux */
+    align-items: center;
+
+    /* active flexbox */
+    display: flex;
+
+    /* garde le texte centré s’il passe sur plusieurs lignes ou si flexbox n’est pas supporté */
+    text-align: center;
+}
+
+.hr::before,
+.hr::after {
+    /* la couleur est volontairement absente ; ainsi elle sera celle du texte */
+    border-top: .0625em solid;
+
+    /* nécessaire pour afficher les pseudo-éléments */
+    content: "";
+
+    /* partage le reste de la largeur disponible */
+    flex: 1;
+
+    /* espace les traits du texte */
+    margin: 0 .5em;
+}
+
+.iconlogin{
+    text-align: center;
 }

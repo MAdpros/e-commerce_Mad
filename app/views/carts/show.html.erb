@@ -18,7 +18,7 @@
         <%= link_to "+", increase_line_item_path(product_id: item.product), class:"btn btn-success" %>
       </td>
       <td><%= number_to_currency(item.total, unit:"euro", separator:",", format: "%n %u")%></td>
-      <td><a href="/line_items/<tr item.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">Enlever du panier</a></td>
+      <td><a href="/line_items/<%= item.id%>" data-method="delete" data-confirm="êtes vous sure ?" class="badge badge-danger">Enlever du panier</a></td>
     </tr>
      <%end%>
   </tbody>

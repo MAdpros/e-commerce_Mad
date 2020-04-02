@@ -66,11 +66,19 @@
                 <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
               </div>
               <% end %>
-              <hr class="my-4">
-              <form class="form-signin">
-              <button class="btn btn-lg btn btn-outline-danger btn-block text-uppercase colorb" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-              <button class="btn btn-lg btn btn-outline-success btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
-            </form>
+             <p class="hr my-4">OR </p>
+             <!-- <form class="form-signin">
+              <button class="btn btn-lg btn btn-outline-danger btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+              <button class="btn btn-lg btn btn-outline-success btn-block text-uppercase" type="submit", href="<%= user_facebook_omniauth_authorize_path%>"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+              
+            </form> -->
+            <div class="iconlogin">
+              <%= link_to  "", user_facebook_omniauth_authorize_path, class:"fab fa-facebook btn btn-outline-info" %>
+
+              <%= link_to "", user_google_oauth2_omniauth_authorize_path, class:"fab fa-google-plus btn btn-outline-danger" %>
+            </div>
+             
+             <hr class="my-4">
             
      <%= render "devise/shared/links" %>
           </div>

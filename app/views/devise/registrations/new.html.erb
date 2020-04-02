@@ -27,7 +27,7 @@
 <%# <% end %> 
 
 <%# <%= render "devise/shared/links" %> 
-
+ <%= render "devise/shared/error_messages", resource: resource %>
 <section class="sect">
   <div class="container">
     <div class="row">
@@ -41,7 +41,7 @@
          
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <div class="form-label-group">
-            <%= render "devise/shared/error_messages", resource: resource %>
+           
             </div>
               <div class="field form-label-group">
                 <%# <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus> %>
@@ -82,11 +82,18 @@
               <%= f.submit "Sign up", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
             </div>
               <% end %>
-              <hr class="my-4">
-              <form class="form-signin">
+
+                <p class="hr my-4">OR </p>
+              <!-- <form class="form-signin">
               <button class="btn btn-lg btn btn-outline-danger btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
-              <button class="btn btn-lg btn btn-outline-success btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
-            </form>
+              <button class="btn btn-lg btn btn-outline-success btn-block text-uppercase" type="submit", href="<%= user_facebook_omniauth_authorize_path%>"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+              
+            </form> -->
+           <div class="iconlogin">
+             <%= link_to  "", user_facebook_omniauth_authorize_path, class:"fab fa-facebook btn btn-outline-info" %>
+
+             <%= link_to "", user_google_oauth2_omniauth_authorize_path, class:"fab fa-google-plus btn btn-outline-danger" %>
+           </div>
             <hr class="my-4">
             <%= render "devise/shared/links" %>
           </div>

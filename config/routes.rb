@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   
-
+devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   resources :zones
   resources :comments
+
   devise_for :managers
+  
   resources :liners
   resources :deliveries
   resources :transits
@@ -16,7 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :carts
-  devise_for :users
+  
+
   root 'home#index'
   resources :home
   resources :articles

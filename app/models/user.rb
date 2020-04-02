@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :welcome_send
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :trackable, :confirmable
+  devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_one :cart
   has_one :delivery
@@ -12,9 +13,39 @@ class User < ApplicationRecord
 
 
   
+  def self.from_facebook(auth)
+    where(facebook_id: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.username = auth.info.name 
+      user.password = Devise.friendly_token[0, 20]
+      user.skip_confirmation!
+    end
+  end
+
+  # def self.from_omniauth(access_token)
+  #   data = access_token.info
+  #   user = User.where(email: data['email']).first
+  #   # Uncomment the section below if you want users to be created if they don't exist
+  #   unless user
+  #       user = User.create(name: data['name'],
+  #          email: data['email'],
+  #          password: Devise.friendly_token[0,20]
+  #       )
+  #   end
+  #   user
+  # end
+
+  def self.from_omniauth(auth)
+    where(google_id: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.username = auth.info.name 
+      user.password = Devise.friendly_token[0, 20]
+      user.skip_confirmation!
+    end
+  end
+
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
-  end
-
+  end 
 end
