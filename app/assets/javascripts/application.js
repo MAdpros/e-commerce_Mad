@@ -18,5 +18,7 @@
 //= require jquery
 //= require jquery.raty
 
+//= require assets/js/swiper.min.js
+
 //= require_tree .
 

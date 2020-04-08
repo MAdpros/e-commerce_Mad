@@ -1,12 +1,48 @@
 <div class="container">
   <div class="row my-2">
+
+     <div class="col-lg-4 order-lg-1 text-center">
+       <div class="profiltail">
+         <%if @user.avatar.attached?%>
+         <%= image_tag @user.avatar, alt: 'avatar', class:"mx-auto img-fluid img-circle d-block profil" %>
+         <%else%>
+         <%= image_tag ("male.png"), alt: 'avatar', class:"mx-auto img-fluid img-circle d-block profil"%>
+         <%end%>
+       </div>
+       <!-- <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+      <h6 class="mt-2">Upload a different photo</h6>
+      <label class="custom-file">
+        <input type="file" id="file" class="custom-file-input">
+        <span class="custom-file-control">Choose file</span>
+      </label>
+
+        <%=@user.id%></p>
+      <h3>Avatar actuel</h3>
+      <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar', class:"mx-auto img-fluid img-circle d-block", alt:"avatar" %>
+      <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+      <%end%> -->
+      <% if user_signed_in? %>
+         <% if @user == current_user  %>
+         <%= form_tag user_avatars_path(@user), multipart: true do %>
+         <%= file_field_tag :avatar %>
+         <%= submit_tag "uploader l'avatar", value:"Modifier" %>
+         <% end %>
+         <% end %>
+      <% end %>
+       
+       
+
+     </div>
+
     <div class="col-lg-8 order-lg-2">
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
         </li>
         <li class="nav-item">
-          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">suivi du commande</a>
         </li>
         <li class="nav-item">
           <a href="" data-target="#edit" data-toggle="tab" class="nav-link">photo</a>
@@ -14,7 +50,7 @@
       </ul>
       <div class="tab-content py-4">
         <div class="tab-pane active" id="profile">
-          <h5 class="mb-3"><%= current_user.username%></h5>
+          <h5 class="mb-3"><%= @user.username%></h5>
           <div class="row">
             <div class="col-md-6">
               <h6>Nom: <%= @user.last_name%></h6>
@@ -22,8 +58,12 @@
               <p>
                 Adresse: <%= @user.adress%>
               </p>
-               <a href="/users/<%= current_user.id%>/edit"
-                 class="nav-link">Edit</a>
+              <% if user_signed_in? %>
+                <% if @user == current_user %>
+                  <a href="/users/<%= current_user.id%>/edit" class="nav-link">Edit</a>
+                <% end %>
+              <% end %>
+               
             </div>
 
             <!-- <div class="col-md-6">
@@ -223,13 +263,6 @@
         
       </div>
     </div>
-    <div class="col-lg-4 order-lg-1 text-center">
-      <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-      <h6 class="mt-2">Upload a different photo</h6>
-      <label class="custom-file">
-        <input type="file" id="file" class="custom-file-input">
-        <span class="custom-file-control">Choose file</span>
-      </label>
-    </div>
+   
   </div>
 </div>

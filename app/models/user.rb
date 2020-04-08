@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_one :cart
   has_one :delivery
+  has_one_attached :avatar
 
   has_many :comments, dependent: :destroy
 
