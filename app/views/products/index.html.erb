@@ -1,5 +1,5 @@
 
-<div class="container">
+<!-- <div class="container">
   <h2>Vrac</h2>
   <div class="row">
     <%@product.each do |product|%>
@@ -75,6 +75,45 @@
      <hr>
      <%= link_to "retour page d'accueil ", root_path %>
      <hr>
-</div>
+</div> -->
 
+<section>
+  <div>
+    <h2 class="center">Nos produits phare </h2>
+  </div>
+  <div class="container-img">
+    <%@product.each do |product|%>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag (product.article.image_url), class:"imgtail" %>
+      </div>
+      <div class="details">
+        <h2><%= product.type.content%></h2>
+        <p>(<%= product.likes.count %>) <i class="fas fa-heart"></i> </p>
+        <p class="listprod"><%=product.article.title%></p>
+        <%if product.type.content == "Vrac" %>
+        <p class="listprod"><%= product.price%> euros/kg</p>
+        <%else%>
+        <p class="listprod"><%= product.price%> euros/unité</p>
+        <%end%>
+          <%if  product.disponibility == true %>
+          <p class="listprod listcol">Disponible immédiatement </p>
+          <%else%>
+          <p class="listprod listcol">Non disponible pour le moment </p>
+          <%end%>
 
+          <div>
+            <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+            <i class="fas fa-shopping-basket"></i>
+            <% end %>
+            <%= link_to 'View Article', article_path(product.article_id) %> </br>
+
+          </div>
+      </div>
+    </div>
+    <% end %>
+  </div>  
+</section>
+ <hr>
+ <%= link_to "retour page d'accueil ", root_path %>
+ <hr>

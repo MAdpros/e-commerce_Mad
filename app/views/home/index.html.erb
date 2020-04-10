@@ -63,7 +63,7 @@
 
 
 <!-- services -->
-<section class="features-section overflow-hidden border-bottom">
+<section class="features-section overflow-hidden section-service">
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-lg-3 margin-b-30">
@@ -148,7 +148,7 @@
                 </a>
           </div>
         <% else %>
-          <div class="col-sm-3 spacemarg">
+          <div class="col-sm-4 spacemarg">
             <div class="containere">
                <a href="articles/<%=article.id%>">
               <% if article.picture.attached? %>
@@ -199,8 +199,10 @@
     </div>
   </div>
 </div>
+  <!-- fin article  -->
 
-    <div style="background-color: rgb(10, 10, 10);">
+  <!-- debut slider  -->
+    <div style="background-color: rgb(10, 10, 10); margin-bottom:80px;">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -467,7 +469,77 @@
         });
       </script>
     </div>
-      <%# fin de l'article %>
+  <!-- fin slider -->
+  
+  <!-- debut produit -->
+<section>  
+  <div>
+    <h2 class="center">Nos produits phare </h2>
+  </div>
+  <div class="container-img">
+    <div class="cardimg">  
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail" %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam! </p>
+      </div>
+    </div>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail"  %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
+          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
+        </p>
+      </div>
+    </div>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail"  %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
+          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
+        </p>
+      </div>
+    </div>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail"  %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
+          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
+        </p>
+      </div>
+    </div>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail"  %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
+          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
+        </p>
+      </div>
+    </div>
+    <div class="cardimg">
+      <div class="imagbx">
+        <%= image_tag "brose.jpg", class:"imgtail"  %>
+      </div>
+      <div class="details">
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
+          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- fin produit -->
+
+     
   <div class="container">
     <hr class="featurette-divider">
     <div class="row featurette">

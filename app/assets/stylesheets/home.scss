@@ -200,6 +200,12 @@
 //     opacity: 1;
 // }
 
+// service
+.section-service{
+    margin-bottom: 80px;
+}
+
+// artivle
 
 .containere {
     
@@ -348,4 +354,80 @@
 .swiper-slide .imagbox .imagcont {
     width: 100%;
     height: 380px;
+}
+
+// flipbook product
+.container-img{
+    max-width: 1000px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.imagbx{
+    width: 100%;
+    height: 100%;
+}
+
+.imgtail{
+    width: 100%;
+    height: 100%;
+}
+
+.cardimg{
+    position: relative;
+    margin: 20px 0;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    transform-style: preserve-3d;
+    transform: perspective(2000px);
+    transition: 1s;
+    box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.cardimg:hover{
+    z-index: 1000;
+    transform: perspective(2000px) rotate(-10deg);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.cardimg .imagbx{
+    position: relative;
+    border: 1px solid rgb(2, 2, 2);
+    box-sizing: border-box;
+    transform-origin: left;
+    z-index: 1;
+    transition: 1s;
+}
+
+.cardimg:hover .imagbx{
+    transform: rotateY(-135deg);
+}
+
+.cardimg .imagbx .imgtail{
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.cardimg .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+ @media only screen and (max-width: 768px) {
+     .container-img {
+         max-width: 1000px;
+         margin: 100px auto;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         margin-left: 46px;
+     }
 }

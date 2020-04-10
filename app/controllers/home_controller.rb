@@ -2,7 +2,8 @@ class HomeController < ApplicationController
   include CurrentCart
 
   def index
-    @articles = Article.all 
+    @product = Product.all
+    @articles = Article.all[0..5] 
   end
 
   def show

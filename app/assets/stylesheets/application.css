@@ -316,4 +316,12 @@ body {
 }
 
 
-/* top */
+/* devise manager */
+.login-manager{
+    text-align: center;
+    background-color: cadetblue;
+    border: 1px solid rgb(2, 2, 2);
+    margin-top: 80px;
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
+
+}
