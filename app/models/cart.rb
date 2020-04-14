@@ -1,16 +1,26 @@
 class Cart < ApplicationRecord
     belongs_to :user
-    has_many :line_items, dependent: :destroy
+    has_many :line_items
 
-    def add_products(product)
-        item = line_items.find_by(product: product)
+    # def add_products(product)
+    #     item = line_items.find_by(product: product)
 
-        if item
-            item.quantity += 1
-        else
-            item = line_items.new(product: product)
-        end
+    #     if item
+    #         item.quantity += 1
+    #     else
+    #         item = line_items.new(product: product)
+    #     end
 
+    # end
+
+    def add_products(product, current_user = nil)
+      # make sure your Item class initializes quantity to o, not nil.
+      current_item = line_items.find_or_initialize_by(product: product)
+
+      current_item.increment!(:quantity)
+      current_item.user = current_user
+      current_item.product.save
+      current_item
     end
 
     def total

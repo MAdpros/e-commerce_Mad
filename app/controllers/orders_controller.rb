@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:index, :new, :create]
+  before_action :set_cart, only: [:new, :create]
   before_action :redirect_if_cart_is_empty, only: :new
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_manager!, only:[:index]
  
 
   # GET /orders
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(order_params.merge(user_id: current_user.id))
     @order.cart = @cart
 
     
@@ -83,7 +84,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :zone_id, :zone_a_id)
+      params.require(:order).permit(:name, :address, :email, :zone_id, :user_id)
     end
 
     def redirect_if_cart_is_empty

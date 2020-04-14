@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :cart
   belongs_to :zone
+  belongs_to :user
 
   has_many :liners
 

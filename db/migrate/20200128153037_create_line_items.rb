@@ -5,6 +5,7 @@ class CreateLineItems < ActiveRecord::Migration[5.2]
       t.belongs_to :product, index: true
       t.integer :quantity, default: 1
 
+      t.belongs_to :user, index: true
       t.timestamps
     end
   end

@@ -29,7 +29,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_products(product)
+    @line_item = @cart.add_products(product, current_user)
 
     # if @line_item.save
     #   redirect_to current_user.cart 
@@ -117,6 +117,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:cart_id, :product_id, :quantity)
+      params.require(:line_item).permit(:cart_id, :product_id, :quantity, :user_id)
     end
 end

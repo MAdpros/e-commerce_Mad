@@ -13,15 +13,12 @@
 <div class="container">
 <h2 class="text-center"><%= @article.title%></h2>
 
-<div class="d-flex justify-content-between">
-  <div class=" position-pic">
+<div class="row">
+  <div class="col-sm-6">
     <%= image_tag @article.image_url, class:" pic-conteint"%>
   </div>
-  <div>
-   
-  </div>
-  <div>
-    
+  <div class="col-sm-6">
+    <p><%= @article.description %></p>
   </div>
 </div>
 <hr>

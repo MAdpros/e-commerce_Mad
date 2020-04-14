@@ -10,7 +10,10 @@ class User < ApplicationRecord
   has_one :delivery
   has_one_attached :avatar
 
+  has_many :orders
+  has_many :line_items
   has_many :comments, dependent: :destroy
+
 
 
   

@@ -95,10 +95,12 @@ ActiveRecord::Schema.define(version: 2020_03_10_085755) do
     t.bigint "cart_id"
     t.bigint "product_id"
     t.integer "quantity", default: 1
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+    t.index ["user_id"], name: "index_line_items_on_user_id"
   end
 
   create_table "liners", force: :cascade do |t|
@@ -131,9 +133,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_085755) do
     t.integer "status", default: 0, null: false
     t.bigint "cart_id"
     t.bigint "zone_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
     t.index ["zone_id"], name: "index_orders_on_zone_id"
   end
 
