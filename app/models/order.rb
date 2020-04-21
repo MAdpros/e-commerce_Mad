@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
   belongs_to :cart
   belongs_to :zone
   belongs_to :user
@@ -9,4 +10,8 @@ class Order < ApplicationRecord
 
   validates :name, :address, :email, presence: true
   validates :status, inclusion: statuses.keys
+
+  def order_send
+    OrderMailer.order_email(self).deliver_now
+  end
 end

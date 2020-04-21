@@ -1,0 +1,93 @@
+
+<section class="pt-2">
+  <div class="container">
+    <div class="row my-3">
+      <div class="col-md-12">
+        <h4>Resultat de recherche</h4>
+      </div>
+    </div>
+    <% @results.each do |result| %>
+    <div class="row mb-3">
+      <div class="w-100">
+        <div class="card">
+          <div class="card-body">
+            <div class="row ">
+              <div class="col-md-2">
+              <%= image_tag result.image_url, class: "searchimg" %>
+                <!-- <img src="https://img.gaadicdn.com/images/car-images/165x68/Renault/Renault-KWID/4318/047.jpg" alt=""> -->
+              </div>
+              <div class="col-md-4">
+                <h4><%= result.title %></h4>
+                <a href="#">click to check offers & discounts</a>
+                <ul class="list-unstyled list-inline">
+                  <li class="list-inline-item">25.17 kmpl</li>
+                  <li class="list-inline-item">799 cc</li>
+                  <li class="list-inline-item">5 Seats</li>
+                </ul>
+
+
+                 <div>
+              
+                    <% if result.comments.blank? %>
+                      <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item btn btn-success"><%= @average_comment = 0 %></li>
+                        <li class="list-inline-item">
+                          <div class="average-review-rating" data-score=<%= @average_comment%>>
+
+                          </div>
+                        </li>
+                      </ul>
+                      
+                     
+                      <% else %>
+                      
+                      <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item btn btn-success"><%= @average_comment = result.comments.average(:rating).round(2) %>
+                        </li>
+                        <li class="list-inline-item">
+                          <div class="average-review-rating" data-score=<%= @average_comment%>>
+
+                          </div>
+                        </li>
+                      </ul>
+                    <% end %>
+                      
+                      <script>
+                        $('.average-review-rating').raty({
+                          readOnly: true,
+                          path: '/assets/',
+                          score: function () {
+                            return $(this).attr('data-score')
+                          }
+                        })
+                      </script>
+                 </div>
+
+
+
+
+              </div>
+              <div class="col-md-5">
+                <% result.Products.each do |product| %>
+                <div>
+                  <h6><%= product.type.content %></h6>
+                  <%= product.article.image_url %>
+
+                  <div class="sub-row", style="text-align: right;">
+                    <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+                    <i class="fas fa-shopping-basket"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</section>
+
+

@@ -13,5 +13,34 @@
 }
 
 .totalcart{
-    float: right;
+    text-align: right;
 }
+
+.trashbtn{
+    color: red;
+}
+
+.qttydiv{
+    width: 90px !important;
+}
+
+.sizeqty{
+    width: 30%;
+    text-align: center;
+}
+
+.minusbtn{
+    text-decoration: none;
+    color: white;
+    border-top-width: 4px !important;
+}
+
+td{
+    padding: 0.5rem !important;
+}
+
+// .minusbtn:hover{
+//     text-decoration: none;
+//     color: white;
+//     border-top-width: 4px;
+// }

@@ -121,6 +121,11 @@ body {
     text-align: center;
 }
 
+.padlinkfooter{
+    padding-top: 23px;
+    margin-bottom: 60px;
+}
+
 /******************************
 *       devise                *
 *******************************/

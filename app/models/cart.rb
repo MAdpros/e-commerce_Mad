@@ -27,6 +27,10 @@ class Cart < ApplicationRecord
         line_items.to_a.sum(&:total)
     end
 
+    # def tax
+    #     (line_items.to_a.sum(&:total) *10 ) /100 
+    # end
+
     def add_product(product)
         current_item = line_items.find_by(product_id: product.id)
         if current_item

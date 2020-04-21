@@ -9,6 +9,7 @@
       <%= image_tag ("logo.png"), class:"sizelogo"%>
     </a>
   </div>
+  
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,19 +58,31 @@
           <%end%>
       </ul>
     
-    <div class="panier">
-      <% if user_signed_in?%>
-        <% if current_user.cart == nil %>
-        <a href="/orders/new"> <%= image_tag ('harona.png'), class:"harona" %> <span
-            class="count">(0)</span><%= params[:notice] %></a>
+      <div class="panier">
+        <% if user_signed_in?%>
+          <% if current_user.cart == nil %>
+          <a href="/orders/new"> <%= image_tag ('harona.png'), class:"harona" %> <span
+              class="count">(0)</span><%= params[:notice] %></a>
+          <%else%>
+          <a href="/carts/<%= current_user.cart.id%>"> <%= image_tag ('harona.png'), class:"harona" %> <span class="count">
+              (<%= current_user.cart.line_items.count%>)</span> </a>
+          <%end%>
         <%else%>
-        <a href="/carts/<%= current_user.cart.id%>"> <%= image_tag ('harona.png'), class:"harona" %> <span class="count">
-            (<%= current_user.cart.line_items.count%>)</span> </a>
+          <a href="/users/sign_up"> <%= image_tag ('harona.png'), class:"harona" %> <span class="count">(0)</span> </a>
         <%end%>
-      <%else%>
-        <a href="/users/sign_up"> <%= image_tag ('harona.png'), class:"harona" %> <span class="count">(0)</span> </a>
-      <%end%>
-    </div>
+      </div>
+
+      <div>
+        <%= form_tag(search_page_path, :method => "get",   
+      class: 'navbar-form navbar-left') do %>
+        <div class="input-group">
+          <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+          <div class="input-group-btn">
+            <%= button_tag "", :class => 'h-100 btn btn-secondary fa fa-search',:name => nil%>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>

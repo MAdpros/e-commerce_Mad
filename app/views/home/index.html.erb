@@ -1,7 +1,3 @@
-
-
-
-
 <main role="main">
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -14,7 +10,7 @@
       <div class="carousel-item active">
         <!-- <img class="first-slide"
           src="assets/images/fonde.jpg" alt="First slide"> -->
-          <%= image_tag ("fond1.jpg"), class:"first-slide"%>
+        <%= image_tag ("fond1.jpg"), class:"first-slide"%>
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>Example headline.</h1>
@@ -27,7 +23,7 @@
       <div class="carousel-item">
         <!-- <img class="second-slide"
           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide"> -->
-          <%= image_tag ("fond4.jpg"), class:"second-slide"%>
+        <%= image_tag ("fond4.jpg"), class:"second-slide"%>
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
@@ -40,7 +36,7 @@
       <div class="carousel-item">
         <!-- <img class="third-slide"
           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide"> -->
-          <%= image_tag ("fond.jpg"), class:"third-slide"%>
+        <%= image_tag ("fond.jpg"), class:"third-slide"%>
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>One more for good measure.</h1>
@@ -62,143 +58,177 @@
   </div>
 
 
-<!-- services -->
-<section class="features-section overflow-hidden section-service">
+  <!-- services -->
+  <section class="features-section overflow-hidden section-service">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 margin-b-30">
+          <div class="feature-box-center text-center">
+            <i class="fas fa-truck sizeicon"></i>
+            <h4 class="text-capitalize">Livraison rapide </h4>
+            <p>
+
+            </p>
+          </div>
+        </div>
+        <!--/col-->
+        <div class="col-md-6 col-lg-3  margin-b-30">
+          <div class="feature-box-center text-center">
+            <i class="fas fa-credit-card sizeicon"></i>
+            <i class="fas fa-shield-alt"></i>
+            <h4 class="text-capitalize">Paiement sécurisé</h4>
+            <p>
+
+            </p>
+          </div>
+        </div>
+        <!--/col-->
+        <div class="col-md-6 col-lg-3  margin-b-30">
+          <div class="feature-box-center text-center">
+            <i class="fas fa-phone-volume sizeicon"></i>
+            <h4 class="text-capitalize">service client</h4>
+            <p>
+
+            </p>
+          </div>
+        </div>
+        <!--/col-->
+        <div class="col-md-6 col-lg-3 margin-b-30">
+          <div class="feature-box-center text-center">
+            <i class="fas fa-hand-holding-usd sizeicon"></i>
+            <h4 class="text-capitalize">Produit sélectionné</h4>
+            <p>
+
+            </p>
+          </div>
+        </div>
+        <!--/col-->
+      </div>
+    </div>
+  </section>
+  <!--end features section-->
+
+
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-3 margin-b-30">
-        <div class="feature-box-center text-center">
-          <i class="fas fa-truck sizeicon"></i>
-          <h4 class="text-capitalize">Livraison rapide </h4>
-          <p>
-            
-          </p>
-        </div>
+    <div class="container marketing">
+      <div>
+        <h2 class="center">Nos produits </h2>
+        <%= image_tag "ligne1.png", class:"ligneimage"%>
       </div>
-      <!--/col-->
-      <div class="col-md-6 col-lg-3  margin-b-30">
-        <div class="feature-box-center text-center">
-          <i class="fas fa-credit-card sizeicon"></i>
-          <i class="fas fa-shield-alt"></i>
-          <h4 class="text-capitalize">Paiement sécurisé</h4>
-          <p>
-            
-          </p>
-        </div>
-      </div>
-      <!--/col-->
-      <div class="col-md-6 col-lg-3  margin-b-30">
-        <div class="feature-box-center text-center">
-        <i class="fas fa-phone-volume sizeicon"></i>
-          <h4 class="text-capitalize">service client</h4>
-          <p>
-            
-          </p>
-        </div>
-      </div>
-      <!--/col-->
-      <div class="col-md-6 col-lg-3 margin-b-30">
-        <div class="feature-box-center text-center">
-          <i class="fas fa-hand-holding-usd sizeicon"></i>
-          <h4 class="text-capitalize">Produit sélectionné</h4>
-          <p>
-            
-          </p>
-        </div>
-      </div>
-      <!--/col-->
-    </div>
-  </div>
-</section>
-<!--end features section-->
 
 
-<div class="container">
-  <div class="container marketing">
-    <div>
-      <h2 class="center">Nos produits </h2>
-      <%= image_tag "ligne1.png", class:"ligneimage"%>
-    </div>
-    
-    
-    <div class="row">
-      <%# debut de l'article %>
-      <% @articles.each do |article|%>
-            <%# lien modal %>
+      <div class="row">
+        <%# debut de l'article %>
+        <% @articles.each do |article|%>
+        <%# lien modal %>
         <%if current_manager %>
-          <div class="col-lg-4">
-            <%= link_to home_path(article.id), remote: true do %>
-              <% if article.picture.attached? %>
-                <%= image_tag (article.picture), class:"rounded-circle tailimgmanager"%>
-              <%else%>
-                <%= image_tag (article.image_url), class:"rounded-circle tailimgmanager" %>
-              <%end%>
-            <%end%>
+        <div class="col-lg-4">
+          <%= link_to home_path(article.id), remote: true do %>
+          <% if article.picture.attached? %>
+          <%= image_tag (article.picture), class:"rounded-circle tailimgmanager"%>
+          <%else%>
+          <%= image_tag (article.image_url), class:"rounded-circle tailimgmanager" %>
+          <%end%>
+          <%end%>
 
-              <h2><%= article.title %></h2>
-              <%= article.id%>
-              <!-- <div class="taildiv">
+          <h2><%= article.title %></h2>
+          <%= article.id%>
+          <!-- <div class="taildiv">
               <p class="tailsp"><%= article.description%></p>
               </div> -->
-                <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
-                <a href="articles/<%=article.id%>" data-method="delete", data-confirm="are you sur?"><i class="far fa-trash-alt"></i></a>
-                <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
-                <a href="<%= article_comments_path(article)%>">
-              <p>(<%= pluralize(article.comments.count, "Avi") %>)</p>
-                </a>
-          </div>
+          <a href="articles/<%=article.id%>/edit"> <i class="far fa-edit"></i></a>
+          <a href="articles/<%=article.id%>" data-method="delete" , data-confirm="are you sur?"><i
+              class="far fa-trash-alt"></i></a>
+          <a href="articles/<%=article.id%>"> <i class="far fa-eye"></i></i></a>
+          <a href="<%= article_comments_path(article)%>">
+            <p>(<%= pluralize(article.comments.count, "Avi") %>)</p>
+          </a>
+        </div>
         <% else %>
-          <div class="col-sm-4 spacemarg">
-            <div class="containere">
-               <a href="articles/<%=article.id%>">
+        <div class="col-sm-4 spacemarg">
+          <div class="containere">
+            <a href="articles/<%=article.id%>">
               <% if article.picture.attached? %>
               <%= image_tag (article.picture), class:"tail"%>
               <%else%>
               <%= image_tag (article.image_url), class:"tail" %>
               <%end%>
-              </a>
-              <div class="cont">
-                <p class="center"><%= article.title %></p>
-                <div class="overlay">
-                  <div class="text">
-                    <div class="taildiv tailsp">
-                      <% link_to home_path(article.id), remote: true do %>
-                      <i class="far fa-plus-square  iconcolor"></i>
-                      <%end%>
-                    </div>
-                    <%= link_to home_path(article.id), remote: true do %>
-                   <p class="btn btn-success">Acheter</p>
+            </a>
+            <div class="cont">
+              <p class="center"><%= article.title %></p>
+              <div class="overlay">
+                <div class="text">
+                  <div class="taildiv tailsp">
+                    <% link_to home_path(article.id), remote: true do %>
+                    <i class="far fa-plus-square  iconcolor"></i>
                     <%end%>
-                    
                   </div>
+                  <%= link_to home_path(article.id), remote: true do %>
+                  <p class="btn btn-success">Acheter</p>
+                  <%end%>
+
                 </div>
               </div>
-              <div>
-                 <p class="center topavis">
+            </div>
+            <div>
+          
+                <div class="topavis">
 
-                <span class="noteavis">
-                 <%if article.comments.blank?%>
-                 <%= average_comment = 0%>
-                 <%else%>
-                 <%= average_comment = article.comments.average(:rating).round(2)%>
-                 <%end%>
-                 </span>
-                 <span style="color: rgb(239, 184, 3);">
-                   <i class="fas fa-star"></i>
-                 </span>
-               
-                  (<a href="<%= article_comments_path(article)%>", class="coloravis">
-                  <%= pluralize(article.comments.count, "Avi") %>
-                  </a>)
-                </p>
-              </div>
+                  <% if article.comments.blank? %>
+                  <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item btn btn-success"><%= @average_comment = 0 %></li>
+                    <li class="list-inline-item">
+                      <div class="average-review-rating" data-score=<%= @average_comment%>>
+
+                      </div>
+                    </li>
+                    <li class="list-inline-item"> (<a href="<%= article_comments_path(article)%>" , class="coloravis">
+                        <%= pluralize(article.comments.count, "Avi") %>
+                      </a>)</li>
+                  </ul>
+
+
+                  <% else %>
+
+                  <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item btn btn-success">
+                      <%= @average_comment = article.comments.average(:rating).round(2) %>
+                    </li>
+                    <li class="list-inline-item">
+                      <div class="average-review-rating" data-score=<%= @average_comment%>>
+
+                      </div>
+                    </li>
+                    <li class="list-inline-item"> (<a href="<%= article_comments_path(article)%>" , class="coloravis">
+                        <%= pluralize(article.comments.count, "Avi") %>
+                      </a>)</li>
+                  </ul>
+                  <% end %>
+
+                  <script>
+                    $('.average-review-rating').raty({
+                      readOnly: true,
+                      path: '/assets/',
+                      score: function () {
+                        return $(this).attr('data-score')
+                      }
+                    })
+                  </script>
+                </div>
+              
+
+                  
+
+
+
             </div>
           </div>
+        </div>
         <%end%>
-      <%end%>
+        <%end%>
+      </div>
     </div>
   </div>
-</div>
   <!-- fin article  -->
   <div>
     <div id="lb-back">
@@ -206,9 +236,9 @@
 
       </div>
     </div>
-  
 
-  <!-- debut slider  -->
+
+    <!-- debut slider  -->
     <div style="background-color: rgb(10, 10, 10); margin-bottom:80px;">
       <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -221,7 +251,7 @@
             <div class="imagbox">
               <%= image_tag "2.jpg", class:"zoomD imagcont" %>
             </div>
-          </div>                                                                                                  
+          </div>
           <div class="swiper-slide">
             <div class="imagbox">
               <%= image_tag "3.jpg", class:"zoomD imagcont" %>
@@ -452,7 +482,7 @@
               <%= image_tag "48.jpg", class:"zoomD imagcont" %>
             </div>
           </div>
-          
+
           <script>
             var zoomImg = function () {
               // Create evil image clone
@@ -483,7 +513,7 @@
                 this.classList.remove("show");
               })
             });
-          </script>  
+          </script>
 
         </div>
         <!-- Add Pagination -->
@@ -510,76 +540,49 @@
     </div>
   </div>
   <!-- fin slider -->
-  
+
   <!-- debut produit -->
-<section>  
-  <div>
-    <h2 class="center">Nos produits phare </h2>
-  </div>
-  <div class="container-img">
-    <div class="cardimg">  
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail" %>
-      </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam! </p>
-      </div>
+  
+  <section>
+
+    <div>
+      <h2 class="center">Nos produits phare </h2>
     </div>
-    <div class="cardimg">
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail"  %>
+    <div class="container-img">
+      <% @product.each do |product| %>
+      <div class="cardimg">
+        <div class="imagbx">
+         <%= image_tag product.article.image_url, class:"imgtail" %>
+        </div>
+        <div class="details">
+          <h2><%= product.type.content%></h2>
+          <p>(<%= product.likes.count %>) <i class="fas fa-heart"></i> </p>
+          <p class="listprod"><%=product.article.title%></p>
+          <%if product.type.content == "Vrac" %>
+          <p class="listprod"><%= product.price%> euros/kg</p>
+          <%else%>
+          <p class="listprod"><%= product.price%> euros/unité</p>
+          <%end%>
+          <%if  product.disponibility == true %>
+          <p class="listprod listcol">Disponible immédiatement </p>
+          <%else%>
+          <p class="listprod listcol">Non disponible pour le moment </p>
+          <%end%>
+          <div class="shopcart">
+            <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+            <i class="fas fa-shopping-basket"></i>
+            <% end %>
+            <%= link_to 'View Article', article_path(product.article_id) %> </br>
+
+          </div>
+        </div>
       </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
-          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
-        </p>
-      </div>
+      <% end %>
     </div>
-    <div class="cardimg">
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail"  %>
-      </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
-          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
-        </p>
-      </div>
-    </div>
-    <div class="cardimg">
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail"  %>
-      </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
-          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
-        </p>
-      </div>
-    </div>
-    <div class="cardimg">
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail"  %>
-      </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
-          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
-        </p>
-      </div>
-    </div>
-    <div class="cardimg">
-      <div class="imagbx">
-        <%= image_tag "brose.jpg", class:"imgtail"  %>
-      </div>
-      <div class="details">
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor sed consectetur voluptatem mollitia, commodi
-          tempore placeat in fugit pariatur aut itaque blanditiis earum eaque velit animi delectus cupiditate ab aliquam!
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
   <!-- fin produit -->
 
-     
+
   <div class="container">
     <hr class="featurette-divider">
     <div class="row featurette">
@@ -593,7 +596,7 @@
       <div class="col-md-5">
         <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
           alt="Generic placeholder image"> -->
-          <%= image_tag ("curcuma.png"), class:"featurette-image img-fluid mx-auto"%>
+        <%= image_tag ("curcuma.png"), class:"featurette-image img-fluid mx-auto"%>
       </div>
     </div>
 
@@ -609,7 +612,7 @@
       <div class="col-md-5 order-md-1">
         <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
           alt="Generic placeholder image"> -->
-          <%= image_tag ("baobab.png"), class:"featurette-image img-fluid mx-auto"%>
+        <%= image_tag ("baobab.png"), class:"featurette-image img-fluid mx-auto"%>
       </div>
     </div>
 
@@ -625,7 +628,7 @@
       <div class="col-md-5">
         <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
           alt="Generic placeholder image"> -->
-          <%= image_tag ("gingembre.png"), class:"featurette-image img-fluid mx-auto"%>
+        <%= image_tag ("gingembre.png"), class:"featurette-image img-fluid mx-auto"%>
       </div>
     </div>
 
@@ -637,7 +640,7 @@
 
 
   <!-- FOOTER -->
- 
+
 </main>
 
 <div id='post-content'></div>

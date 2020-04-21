@@ -7,6 +7,8 @@ devise_for :users, controllers: {
   resources :comments
 
   devise_for :managers
+
+  get '/search' => 'pages#search', :as => 'search_page'
   
   resources :liners
   resources :deliveries

@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     @product = Product.all
     @articles = Article.all[0..5] 
+
   end
 
   def show
