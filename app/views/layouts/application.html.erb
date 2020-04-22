@@ -31,14 +31,16 @@
   <%= render "layouts/navbar.html.erb"%>
 <div class="alert">
   <span class="notice"><%= notice %></span>
-  <span class="alert"><%= alert %></span>
+  <span class="alert "><%= alert %></span>
 </div>
 
-  
+  <div>
     <%= yield %>
-
+  </div>
     
 
+    
+    <%= render "/layouts/back_to_top.html.erb" %>
 
     <div class="margfoot">
       <%= render "layouts/linkfooter.html.erb" %>

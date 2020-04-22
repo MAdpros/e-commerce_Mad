@@ -18,7 +18,7 @@
 
  /* navbar */
 .colnav{
-    background-color: #230207d6;
+    background-color: #4E506B;
 }
 
 .divmada{
@@ -95,8 +95,7 @@ html {
 }
 
 body {
-    margin-bottom: 160px;
-    
+    margin-bottom: 160px;  
     /* Margin bottom by footer height */
 }
 
@@ -108,7 +107,7 @@ body {
     /* Set the fixed height of the footer here */
     line-height: 60px;
     /* Vertically center the text there */
-    background-color: #501504b3;
+    background-color: #4E506B;
     margin-bottom: 0px
 }
 
@@ -329,4 +328,47 @@ body {
     margin-top: 80px;
     box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
 
+}
+
+
+/* top */
+#button {
+    display: inline-block;
+    background-color: #C4250A;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s,
+        opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: #4E506B;
+}
+
+#button:active {
+    background-color: #4E506B;
+}
+
+#button.show {
+    opacity: 1;
+    visibility: visible;
 }

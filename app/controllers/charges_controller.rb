@@ -23,6 +23,20 @@ class ChargesController < ApplicationController
       currency: "eur",
     })
 
+    # Stripe::InvoiceItem.create({
+    #   customer: customer.id,
+    #   amount: @amount,
+    #   currency: 'eur',
+    #   description: 'One-time setup fee',
+    # })
+
+    # invoice = Stripe::Invoice.create({
+    #   customer: customer.id,
+    #   auto_advance: true, # auto-finalize this draft after ~1 hour
+    # })
+
+
+
       current_user.cart.destroy
       current_user.delivery.destroy
 

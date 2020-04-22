@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.filtercarousel{
+    background-size: cover;
+    filter: grayscale(0.25);
+}
+
 .carousel-item {
     height: 80vh;
     min-height: 350px;
@@ -465,3 +470,5 @@
     width: 90%;
     margin-top: 115px;
 }
+
+
