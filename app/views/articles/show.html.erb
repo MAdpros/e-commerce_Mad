@@ -29,26 +29,36 @@
         <h2>Conditionnement</h2>
         <div class="row">
           <% @article.Products.each do |product| %>
-          <div class="col-lg-4">
+          <div class="col-lg-4 margcondit">
             <%if @article.picture.attached?%>
-            <%= image_tag (@article.picture), class:"img-fluid rounded-circle"%>
+            <%= image_tag (@article.picture), class:"img-fluid"%>
             <%else%>
             <% if @article.image_url == nil %>
-            <%= image_tag ("fond.jpg"), class:"img-fluid rounded-circle"%>
+            <%= image_tag ("fond.jpg"), class:"img-fluid"%>
             <%else%>
-            <%= image_tag (@article.image_url), class:"img-fluid rounded-circle" %>
+            <%= image_tag (@article.image_url), class:"img-fluid" %>
             <%end%>
             <%end%>
-            <h4><%= product.type.content %></h4>
-            <p>
-              <%if product.type.content == "Vrac" %>
-              <p class="listprod"><%= product.price%> euros/kg</p>
-              <%else%>
-              <p class="listprod"><%= product.price%> euros/unité</p>
-              <%end%>
-            </p>
+            <h5><%= product.type.content %></h5>
+            <ul>
+              <li>
+                <%if product.type.content == "Vrac" %>
+                <p class="listprod"><%= product.price%> euros/kg</p>
+                <%else%>
+                <div class="listprod"><%= product.price%> euros/unité</p>
+                  <%end%>
+              </li>
+              <li>
+                <%if  product.disponibility == true %>
+                <p class="listprod listcol">Disponible </p>
+                <%else%>
+                <p class="listprod listcol">pas disponible </p>
+                <%end%>
+              </li>
+            </ul>
+            
               <div>
-                <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+                <%= button_to line_items_path(product_id: product.id),class:"btn btn-warning" do %>
                 <i class="fas fa-shopping-basket"></i>
                 <% end %>
               </div>
@@ -57,11 +67,15 @@
         </div>
       </div>
       <hr>
+
+      <!-- avis  -->
       <div id="comment_pane">
         <% @comments.each do |comment|%>
           <%= render "comments/comment", comment: comment%>
         <%end%>
       </div>
+      <!-- fin avis -->
+
     </div>
     <div class="col-md-6">
       <h1 class="my-4">

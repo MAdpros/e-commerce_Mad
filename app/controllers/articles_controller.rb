@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
 
     def show
         @articlee = Article.all
-        @articlee = @articlee[0..3]
+        @articlee = @articlee[0..2]
 
         @comment = Comment.new
         @commente = @article.comments.order(created_at: :desc)

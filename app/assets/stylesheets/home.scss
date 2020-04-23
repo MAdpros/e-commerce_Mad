@@ -210,6 +210,42 @@
     margin-bottom: 80px;
 }
 
+// @keyframes bounce {
+
+//     0%,
+//     100%,
+//     20%,
+//     50%,
+//     80% {
+       
+//         transform: translateY(0)
+//     }
+
+//     40% {
+//         transform: translateY(-30px)
+//     }
+
+//     60% {
+        
+//         transform: translateY(-15px)
+//     }
+// }
+
+// .bounce {
+//     animation-duration: 1s;
+// }
+
+// .bounce:hover {
+//     cursor: pointer;
+//     animation-name: bounce;
+//     -moz-animation-name: bounce;
+// }
+
+
+
+
+
+
 // artivle
 
 .containere {
@@ -314,6 +350,7 @@
     font-size: 50px;
     padding-bottom: 12px;
 }
+
 
  @media only screen and (max-width: 768px) {
      .overlay {
@@ -472,3 +509,7 @@
 }
 
 
+.btnvert{
+    background-color: #54754c !important;
+    border: none !important;
+}

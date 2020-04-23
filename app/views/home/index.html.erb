@@ -10,7 +10,7 @@
       <div class="carousel-item active">
         <!-- <img class="first-slide"
           src="assets/images/fonde.jpg" alt="First slide"> -->
-        <%= image_tag ("fond1.jpg"), class:"first-slide filtercarousel"%>
+        <%= image_tag ("fon.jpg"), class:"first-slide filtercarousel"%>
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>Example headline.</h1>
@@ -64,7 +64,7 @@
       <div class="row">
         <div class="col-md-6 col-lg-3 margin-b-30">
           <div class="feature-box-center text-center">
-            <i class="fas fa-truck sizeicon"></i>
+            <i class="fas fa-truck bounce sizeicon"></i>
             <h4 class="text-capitalize">Livraison rapide </h4>
             <p>
 
@@ -164,7 +164,7 @@
                     <%end%>
                   </div>
                   <%= link_to home_path(article.id), remote: true do %>
-                  <p class="btn btn-success">Acheter</p>
+                  <p class="btn btn-success btnvert">Acheter</p>
                   <%end%>
 
                 </div>
@@ -176,7 +176,7 @@
 
                   <% if article.comments.blank? %>
                   <ul class="list-unstyled list-inline">
-                    <li class="list-inline-item btn btn-success"><%= @average_comment = 0 %></li>
+                    <li class="list-inline-item btn btn-success btnvert"> <%= @average_comment = 0 %></li>
                     <li class="list-inline-item">
                       <div class="average-review-rating" data-score=<%= @average_comment%>>
 
@@ -191,7 +191,7 @@
                   <% else %>
 
                   <ul class="list-unstyled list-inline">
-                    <li class="list-inline-item btn btn-success">
+                    <li class="list-inline-item btn btn-success btnvert">
                       <%= @average_comment = article.comments.average(:rating).round(2) %>
                     </li>
                     <li class="list-inline-item">
@@ -556,7 +556,20 @@
         </div>
         <div class="details">
           <h2><%= product.type.content%></h2>
-          <p>(<%= product.likes.count %>) <i class="fas fa-heart"></i> </p>
+
+            (<%= product.likes.count %>)
+            <% if current_user %>
+            <% pre_like = product.likes.find { |like| like.user_id == current_user.id} %>
+
+            <% if pre_like %>
+            <%= link_to '', product_like_path(product, pre_like), method: :delete, class:"far fa-thumbs-down zomm" %>
+            <% else %>
+            <%= link_to'', product_likes_path(product), method: :post, class:"far fa-thumbs-up zomm" %>
+            <% end %>
+            <% else %>
+            <i class="far fa-thumbs-up"></i>
+            <% end %>
+         
           <p class="listprod"><%=product.article.title%></p>
           <%if product.type.content == "Vrac" %>
           <p class="listprod"><%= product.price%> euros/kg</p>
@@ -569,7 +582,7 @@
           <p class="listprod listcol">Non disponible pour le moment </p>
           <%end%>
           <div class="shopcart">
-            <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+            <%= button_to line_items_path(product_id: product.id),class:"btn btn-warning" do %>
             <i class="fas fa-shopping-basket"></i>
             <% end %>
             <%= link_to 'View Article', article_path(product.article_id) %> </br>
@@ -583,7 +596,7 @@
   <!-- fin produit -->
 
 
-  <div class="container">
+  <!-- <div class="container">
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7">
@@ -594,9 +607,9 @@
           commodo.</p>
       </div>
       <div class="col-md-5">
-        <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
-          alt="Generic placeholder image"> -->
-        <%= image_tag ("curcuma.png"), class:"featurette-image img-fluid mx-auto"%>
+         <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
+          alt="Generic placeholder image">
+        
       </div>
     </div>
 
@@ -610,9 +623,9 @@
           commodo.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
-          alt="Generic placeholder image"> -->
-        <%= image_tag ("baobab.png"), class:"featurette-image img-fluid mx-auto"%>
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
+          alt="Generic placeholder image">
+      
       </div>
     </div>
 
@@ -626,18 +639,18 @@
           commodo.</p>
       </div>
       <div class="col-md-5">
-        <!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
-          alt="Generic placeholder image"> -->
-        <%= image_tag ("gingembre.png"), class:"featurette-image img-fluid mx-auto"%>
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
+          alt="Generic placeholder image"> 
+        </div>
       </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
-  </div><!-- /.container -->
-
+      
+      <hr class="featurette-divider">
+      
+      
+      
+    </div> -->
+    
+    <!-- <%= image_tag ("gingembre.png"), class:"featurette-image img-fluid mx-auto"%> -->
 
   <!-- FOOTER -->
 

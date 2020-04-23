@@ -89,7 +89,21 @@
       </div>
       <div class="details">
         <h2><%= product.type.content%></h2>
-        <p>(<%= product.likes.count %>) <i class="fas fa-heart"></i> </p>
+       
+        (<%= product.likes.count %>)
+         <% if current_user %>
+         <% pre_like = product.likes.find { |like| like.user_id == current_user.id} %>
+
+         <% if pre_like %>
+         <%= link_to '', product_like_path(product, pre_like), method: :delete, class:"far fa-thumbs-down zomm" %>
+         <% else %>
+         <%= link_to'', product_likes_path(product), method: :post, class:"far fa-thumbs-up zomm" %>
+         <% end %>
+         <% else %>
+          <i class="far fa-thumbs-up"></i>
+         <% end %>
+        
+
         <p class="listprod"><%=product.article.title%></p>
         <%if product.type.content == "Vrac" %>
         <p class="listprod"><%= product.price%> euros/kg</p>
@@ -102,8 +116,8 @@
           <p class="listprod listcol">Non disponible pour le moment </p>
           <%end%>
 
-          <div>
-            <%= button_to line_items_path(product_id: product.id),class:"btn btn-outline-primary" do %>
+          <div class="shopcart">
+            <%= button_to line_items_path(product_id: product.id),class:"btn btn-warning" do %>
             <i class="fas fa-shopping-basket"></i>
             <% end %>
             <%= link_to 'View Article', article_path(product.article_id) %> </br>
